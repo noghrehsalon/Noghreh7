@@ -1,0 +1,1922 @@
+/* ==========================================================================
+   سالن زیبایی نقره — استایل اصلی
+   طراحی: پالت گرم و لوکس با لهجه شرابی و طلایی، تایپوگرافی وزیرمتن
+   ========================================================================== */
+
+:root{
+	--c-bg:        #FBF7F4;
+	--c-bg-alt:    #F3ECE6;
+	--c-ink:       #241F1E;
+	--c-ink-soft:  #5B524F;
+	--c-accent:    #7A2E38;
+	--c-accent-2:  #5C2129;
+	--c-taupe:     #C9C0B8;
+	--c-blush:     #EFDCD9;
+	--c-gold:      #B08D57;
+	--c-white:     #FFFFFF;
+	--c-line:      rgba(36,31,30,.10);
+
+	--font-main: 'Vazirmatn', Tahoma, 'Segoe UI', sans-serif;
+
+	--container: 1180px;
+	--container-narrow: 760px;
+	--radius-s: 6px;
+	--radius-m: 14px;
+	--radius-l: 26px;
+
+	--sp-1: 8px;
+	--sp-2: 16px;
+	--sp-3: 24px;
+	--sp-4: 40px;
+	--sp-5: 64px;
+	--sp-6: 96px;
+}
+
+/* ---------- ریست پایه ---------- */
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; width:100%; }
+body{
+	margin:0;
+	direction: rtl;
+	font-family: var(--font-main);
+	background: var(--c-bg);
+	color: var(--c-ink);
+	line-height: 1.9;
+	font-size: 16px;
+	overflow-x: hidden;
+}
+img{ max-width:100%; height:auto; display:block; }
+a{ color: inherit; text-decoration:none; }
+ul{ margin:0; padding:0; list-style:none; }
+button{ font-family:inherit; cursor:pointer; }
+input, textarea{ font-family:inherit; }
+h1,h2,h3,h4,p{ margin:0; }
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+	outline: 2px solid var(--c-accent);
+	outline-offset: 3px;
+}
+
+.screen-reader-text{
+	position:absolute !important; width:1px;height:1px;overflow:hidden;
+	clip:rect(1px,1px,1px,1px); white-space:nowrap;
+}
+.skip-link{ z-index: 9999; }
+.skip-link:not(:focus){ position:absolute; left:-9999px; }
+.skip-link:focus{
+	position:fixed; top:10px; right:10px; background:var(--c-accent); color:#fff;
+	padding:10px 18px; border-radius: var(--radius-s);
+}
+
+@media (prefers-reduced-motion: reduce){
+	*, *::before, *::after{ animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+.container{ max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+.container-narrow{ max-width: var(--container-narrow); }
+
+.site{ position:relative; }
+
+/* ---------- پس‌زمینه تزئینی سراسر سایت ---------- */
+body.has-decorative-bg{
+	background-image:
+		radial-gradient(circle at 8% 12%, rgba(122,46,56,.06) 0, transparent 40%),
+		radial-gradient(circle at 92% 28%, rgba(176,141,87,.08) 0, transparent 38%),
+		radial-gradient(circle at 20% 85%, rgba(122,46,56,.06) 0, transparent 36%),
+		radial-gradient(circle at 82% 92%, rgba(176,141,87,.07) 0, transparent 36%),
+		radial-gradient(circle at 50% 50%, rgba(122,46,56,.035) 0, transparent 30%),
+		repeating-radial-gradient(circle at 50% 0%, rgba(176,141,87,.05) 0, rgba(176,141,87,.05) 1px, transparent 1px, transparent 46px);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	position:relative;
+}
+body.has-decorative-bg::before,
+body.has-decorative-bg::after{
+	content:''; position:absolute; pointer-events:none; z-index:0;
+	border-radius:50%; border:1px solid rgba(176,141,87,.14);
+}
+body.has-decorative-bg::before{ width:340px; height:340px; top:-80px; right:-100px; }
+body.has-decorative-bg::after{ width:220px; height:220px; bottom:6%; left:-70px; border-color: rgba(122,46,56,.12); }
+
+/* ---------- نمایش دستگاهی ---------- */
+@media (min-width: 1025px){ .noghre-hide-desktop{ display:none !important; } }
+@media (max-width: 1024px) and (min-width: 641px){ .noghre-hide-tablet{ display:none !important; } }
+@media (max-width: 640px){ .noghre-hide-mobile{ display:none !important; } }
+
+/* ---------- نمایان‌شدن تدریجی بخش‌ها ---------- */
+[data-reveal]{
+	opacity: 0;
+	transform: translateY(22px);
+	transition: opacity .7s ease, transform .7s ease;
+}
+[data-reveal].is-visible{ opacity: 1; transform: translateY(0); }
+
+/* ---------- عنوان بخش‌ها ---------- */
+.section{ padding: var(--sp-6) 0; }
+.section-title{
+	position: relative;
+	display:inline-block;
+	font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+	font-weight: 800;
+	margin-bottom: var(--sp-2);
+}
+.section-title::after{
+	content:'';
+	position:absolute; bottom:-12px; right:50%; transform: translateX(50%);
+	width:46px; height:6px;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='6'%3E%3Cpath d='M2 4C10 -1 15 8 23 3S38 -1 44 4' stroke='%23B08D57' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.section-sub{ color: var(--c-ink-soft); margin-bottom: var(--sp-4); margin-top: var(--sp-2); }
+.section > .container > .section-title,
+.section > .container > .section-sub{ text-align:center; }
+.section-team .container, .section-faq .container{ text-align:center; }
+
+/* ---------- دکمه‌ها ---------- */
+.btn{
+	display:inline-flex; align-items:center; gap:8px;
+	padding: 14px 28px;
+	border-radius: 999px;
+	font-weight:600;
+	font-size: .95rem;
+	transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+	border: 1.5px solid transparent;
+}
+.btn-primary{ background: var(--c-accent); color:#fff; }
+.btn-primary:hover{ background: var(--c-accent-2); transform: translateY(-2px); }
+.btn-outline{ border-color: var(--c-ink); color: var(--c-ink); }
+.btn-outline:hover{ background: var(--c-ink); color:#fff; transform: translateY(-2px); }
+
+/* ==========================================================================
+   هدر
+   ========================================================================== */
+.site-header{
+	position: relative;
+	z-index: 900;
+	border-bottom: 1px solid var(--c-line);
+}
+.site-header::before{
+	content:'';
+	position:absolute; inset:0; z-index:-1;
+	background: rgba(251,247,244,.92);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	transition: box-shadow .25s ease;
+}
+.site-header.js-fixed{
+	position: fixed !important;
+	top:0; left:0; right:0;
+}
+.site-header-spacer{ height:0; }
+.site-header.is-scrolled::before{ box-shadow: 0 8px 26px rgba(36,31,30,.08); }
+
+.site-logo-link{ display:flex; align-items:center; gap:10px; }
+.site-logo-img{ max-height: 56px; width:auto; }
+.site-logo-mark{
+	display:inline-flex; align-items:center; justify-content:center;
+	width:42px; height:42px; border-radius:50%;
+	background: linear-gradient(135deg, var(--c-accent), var(--c-gold));
+	color:#fff; font-weight:800; font-size:1.15rem;
+}
+.header-inner{
+	display:flex; align-items:center; justify-content:space-between;
+	gap: var(--sp-3);
+	min-height: 84px;
+}
+.site-branding img{ max-height: 56px; width:auto; }
+.site-title-text{ font-size:1.35rem; font-weight:800; color: var(--c-accent); }
+
+.primary-menu{ display:flex; align-items:center; gap: var(--sp-3); flex-wrap:wrap; }
+.primary-menu li{ position:relative; }
+.primary-menu a{
+	font-weight:500; font-size:.98rem; padding: 8px 2px; position:relative;
+}
+.primary-menu a::after{
+	content:''; position:absolute; right:0; bottom:0; width:0; height:2px;
+	background: var(--c-gold); transition: width .2s ease;
+}
+.primary-menu a:hover::after, .primary-menu .current-menu-item > a::after{ width:100%; }
+.primary-menu .sub-menu{
+	display:none; position:absolute; top:100%; right:0; min-width:200px;
+	background:#fff; border:1px solid var(--c-line); border-radius: var(--radius-s);
+	padding:8px; box-shadow: 0 12px 28px rgba(36,31,30,.10); z-index:20;
+}
+.primary-menu li:hover > .sub-menu{ display:block; }
+.primary-menu .sub-menu a{ display:block; padding:8px 10px; border-radius:4px; }
+.primary-menu .sub-menu a:hover{ background: var(--c-bg-alt); }
+
+.header-actions{ display:flex; align-items:center; gap: var(--sp-3); }
+.header-btn{ white-space:nowrap; padding:10px 20px; font-size:.9rem; }
+.menu-toggle{
+	display:none; background:none; border:none; padding:6px; color: var(--c-ink);
+}
+
+.noghre-topbar{
+	background: var(--c-ink); color: rgba(255,255,255,.85);
+	font-size:.82rem;
+}
+.topbar-inner{
+	display:flex; align-items:center; justify-content:space-between;
+	gap: var(--sp-2); padding:8px 24px;
+}
+.topbar-address{ display:flex; align-items:center; gap:6px; }
+.topbar-phones{ display:flex; align-items:center; gap: var(--sp-3); }
+.topbar-phone{ display:flex; align-items:center; gap:6px; }
+.topbar-phone:hover{ color: var(--c-gold); }
+@media (max-width: 640px){
+	.topbar-inner{ flex-direction:column; gap:6px; padding:8px 16px; text-align:center; }
+	.topbar-phones{ gap: var(--sp-2); }
+}
+
+@media (max-width: 900px){
+	.primary-navigation{
+		position:fixed; inset:0 0 0 auto; width:min(320px,86vw); height:100vh;
+		background: var(--c-bg); z-index: 600;
+		transform: translateX(100%);
+		transition: transform .3s ease;
+		padding: 100px var(--sp-3) var(--sp-3);
+		box-shadow: -20px 0 60px rgba(0,0,0,.15);
+		overflow-y:auto;
+	}
+	body.nav-open .primary-navigation{ transform: translateX(0); }
+	.primary-menu{ flex-direction:column; align-items:flex-start; gap: var(--sp-2); width:100%; }
+	.primary-menu .sub-menu{ position:static; box-shadow:none; display:block; margin-right:14px; }
+	.menu-toggle{ display:inline-flex; }
+	.header-btn{ font-size:.8rem; padding:8px 14px; }
+	body.nav-open{ overflow:hidden; }
+	body.nav-open::after{
+		content:''; position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:550;
+	}
+}
+
+/* ==========================================================================
+   هیرو
+   ========================================================================== */
+.hero{ padding: var(--sp-5) 0 var(--sp-6); position:relative; overflow:hidden; }
+.hero-blob{
+	position:absolute; border-radius:50%; filter: blur(2px); z-index:0; opacity:.55;
+	pointer-events:none;
+}
+.hero-blob-1{
+	width:340px; height:340px; background: radial-gradient(circle at 30% 30%, var(--c-blush), transparent 70%);
+	top:-120px; left:-100px;
+}
+.hero-blob-2{
+	width:260px; height:260px; background: radial-gradient(circle at 60% 40%, rgba(176,141,87,.35), transparent 70%);
+	bottom:-100px; right:-60px;
+}
+.hero-grid{ position:relative; z-index:1; }
+.hero-grid{
+	display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--sp-5); align-items:center;
+}
+.hero-eyebrow{
+	color: var(--c-accent); font-weight:600; margin-bottom: var(--sp-2);
+	max-width: 480px;
+}
+.hero-text h1{
+	font-size: clamp(2rem, 4vw, 3rem);
+	font-weight: 800;
+	line-height: 1.35;
+	margin-bottom: var(--sp-3);
+}
+.hero-desc{ color: var(--c-ink-soft); max-width: 620px; margin-bottom: var(--sp-3); }
+.hero-desc p{ margin-bottom: var(--sp-2); }
+.hero-cta{ display:flex; gap: var(--sp-2); flex-wrap:wrap; margin-bottom: var(--sp-3); }
+.hero-tagline-2{ font-weight:600; color: var(--c-gold); }
+
+.hero-media-frame{
+	position:relative; border-radius: var(--radius-l);
+	overflow:hidden; aspect-ratio: 4/5;
+	background: var(--c-blush);
+	border: 1px solid var(--c-line);
+}
+.hero-media-frame img{ width:100%; height:100%; object-fit:cover; }
+.hero-media-frame::after{
+	content:''; position:absolute; inset:14px; border:1px solid rgba(176,141,87,.5);
+	border-radius: calc(var(--radius-l) - 8px); pointer-events:none;
+}
+
+.hero-media-frame.has-sparkle{ overflow:visible; }
+.hero-sparkle-layer{ position:absolute; inset:0; pointer-events:none; overflow:hidden; border-radius: inherit; }
+.hero-sparkle-layer .spark{
+	position:absolute; width:14px; height:14px;
+	background: linear-gradient(135deg, #fff, rgba(255,255,255,.2));
+	clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
+	animation: noghre-sparkle 2.8s ease-in-out infinite;
+	filter: drop-shadow(0 0 4px rgba(255,255,255,.9));
+}
+.spark-1{ top:14%; right:20%; width:16px; height:16px; animation-delay:0s; }
+.spark-2{ top:60%; right:70%; width:11px; height:11px; animation-delay:.6s; }
+.spark-3{ top:32%; right:58%; width:8px; height:8px; animation-delay:1.2s; }
+.spark-4{ top:76%; right:22%; width:13px; height:13px; animation-delay:1.8s; }
+.spark-5{ top:8%; right:52%; width:9px; height:9px; animation-delay:2.3s; }
+@keyframes noghre-sparkle{
+	0%, 100%{ opacity:0; transform: scale(.3) rotate(0deg); }
+	50%{ opacity:1; transform: scale(1.25) rotate(90deg); }
+}
+.shimmer-sweep{
+	position:absolute; inset:-20%; pointer-events:none;
+	background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.35) 48%, rgba(255,255,255,.55) 50%, rgba(255,255,255,.35) 52%, transparent 60%);
+	transform: translateX(-120%);
+	animation: noghre-shimmer 4.5s ease-in-out infinite;
+}
+@keyframes noghre-shimmer{
+	0%, 55%, 100%{ transform: translateX(-120%); }
+	75%{ transform: translateX(120%); }
+}
+
+.hero-media{ position:relative; }
+.hero-badges{ position:absolute; inset:0; pointer-events:none; z-index:2; }
+.hero-badge{
+	position:absolute; background:#fff; color: var(--c-ink);
+	font-size:.82rem; font-weight:700; padding:10px 16px;
+	border-radius: 999px 999px 999px 4px;
+	box-shadow: 0 12px 26px rgba(36,31,30,.14);
+	border: 1px solid var(--c-line);
+	animation: noghre-wiggle 4.5s ease-in-out infinite;
+	white-space:nowrap;
+}
+.hero-badge-1{ top:6%; right:-6%; animation-delay:0s; }
+.hero-badge-2{ top:48%; left:-10%; border-radius: 999px 999px 4px 999px; animation-delay:1.2s; }
+.hero-badge-3{ bottom:4%; right:4%; animation-delay:2.2s; }
+@keyframes noghre-wiggle{
+	0%, 100%{ transform: rotate(-3deg); }
+	50%{ transform: rotate(3deg); }
+}
+@media (max-width: 900px){
+	.hero-badge{ font-size:.72rem; padding:7px 12px; }
+	.hero-badge-1{ top:-4%; right:2%; }
+	.hero-badge-2{ top:50%; left:-2%; }
+	.hero-badge-3{ bottom:-4%; right:30%; }
+}
+
+@media (max-width: 900px){
+	.hero-grid{ grid-template-columns: 1fr; }
+	.hero-media{ order:-1; }
+	.hero-media-frame{ aspect-ratio: 16/10; }
+}
+
+/* ==========================================================================
+   ویژگی‌ها
+   ========================================================================== */
+.features-grid{
+	display:grid; grid-template-columns: repeat(4,1fr); gap: var(--sp-3);
+}
+.feature-card{
+	background: var(--c-white); border:1px solid var(--c-line);
+	border-radius: var(--radius-m); padding: var(--sp-3);
+	transition: transform .2s ease, box-shadow .2s ease;
+}
+.feature-card:hover{ transform: translateY(-4px); box-shadow: 0 16px 30px rgba(36,31,30,.08); }
+.feature-index{
+	display:block; font-size:.85rem; color: var(--c-gold); font-weight:700; margin-bottom:10px;
+}
+.feature-card h3{ font-size:1.05rem; font-weight:700; margin-bottom:8px; }
+.feature-card p{ color: var(--c-ink-soft); font-size:.92rem; }
+
+@media (max-width: 900px){ .features-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 520px){ .features-grid{ grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   تیم / پرسنل
+   ========================================================================== */
+.section-team{ background: var(--c-bg-alt); }
+.team-scroller{
+	display:flex; gap: var(--sp-3); overflow-x:auto;
+	padding: var(--sp-1) 24px var(--sp-2);
+	scroll-snap-type: x proximity;
+	max-width: calc(var(--container) + 48px); margin:0 auto;
+	cursor: grab;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	user-select: none;
+	justify-content: safe center;
+}
+.team-scroller::-webkit-scrollbar{ display:none; }
+.team-scroller.is-dragging{ cursor: grabbing; scroll-snap-type: none; }
+
+.team-card{
+	flex: 0 0 240px; scroll-snap-align:start;
+	background:#fff; border-radius: var(--radius-m); overflow:hidden;
+	border:1px solid var(--c-line);
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+.team-scroller:not(.is-dragging) .team-card:hover{
+	transform: translateY(-6px) rotate(-.6deg);
+	box-shadow: 0 18px 32px rgba(36,31,30,.10);
+}
+.team-photo{
+	height:280px; background-size:cover; background-position:center;
+	background-color: var(--c-taupe);
+}
+.team-info{ padding: var(--sp-2); text-align:right; }
+.team-info h3{ font-size:1.05rem; font-weight:700; margin-bottom:4px; }
+.team-info p{ color: var(--c-ink-soft); font-size:.88rem; margin-bottom:10px; }
+.team-social{ display:flex; align-items:center; justify-content:center; gap:10px; }
+.team-social a{
+	display:flex; align-items:center; justify-content:center;
+	width:34px; height:34px; border-radius:50%;
+	background: var(--c-bg-alt); color: var(--c-accent);
+	transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.team-social a:hover{ background: var(--c-accent); color:#fff; transform: translateY(-2px); }
+
+/* ==========================================================================
+   سوالات متداول
+   ========================================================================== */
+.accordion{ text-align:right; border-top:1px solid var(--c-line); }
+.accordion-item{ border-bottom:1px solid var(--c-line); }
+.accordion-trigger{
+	width:100%; background:none; border:none; display:flex; align-items:center;
+	justify-content:space-between; gap: var(--sp-2);
+	padding: var(--sp-2) 4px; text-align:right; font-size:1rem; font-weight:600;
+	color: var(--c-ink);
+}
+.accordion-icon{ flex:0 0 auto; width:12px; height:12px; position:relative; }
+.accordion-icon::before, .accordion-icon::after{
+	content:''; position:absolute; background: var(--c-accent); border-radius:2px;
+}
+.accordion-icon::before{ width:12px; height:2px; top:5px; }
+.accordion-icon::after{ width:2px; height:12px; right:5px; transition: transform .25s ease; }
+.accordion-trigger[aria-expanded="true"] .accordion-icon::after{ transform: rotate(90deg) translateX(0); opacity:0; }
+
+.accordion-panel{ display:grid; grid-template-rows: 0fr; transition: grid-template-rows .28s ease; }
+.accordion-panel > p{ overflow:hidden; color: var(--c-ink-soft); padding: 0 4px; font-size:.95rem; }
+.accordion-item.is-open .accordion-panel{ grid-template-rows: 1fr; }
+.accordion-item.is-open .accordion-panel > p{ padding-bottom: var(--sp-2); }
+
+/* ==========================================================================
+   مجوزها
+   ========================================================================== */
+.licenses-grid{
+	display:grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: var(--sp-2);
+}
+.license-item{ margin:0; text-align:center; }
+.license-item img{
+	border-radius: var(--radius-s); border:1px solid var(--c-line);
+	aspect-ratio: 4/5; object-fit:cover;
+}
+.license-item figcaption{ font-size:.85rem; color: var(--c-ink-soft); margin-top:8px; }
+.license-item-link{ display:block; }
+.license-item-link:hover .license-item img{ transform: scale(1.03); }
+.license-item img{ transition: transform .25s ease; }
+.license-item-code{
+	display:flex; align-items:center; justify-content:center;
+	min-height: 110px; padding: var(--sp-1);
+	background:#fff; border:1px solid var(--c-line); border-radius: var(--radius-s);
+}
+
+/* ==========================================================================
+   وبلاگ
+   ========================================================================== */
+.section-blog{ background: var(--c-bg-alt); }
+.section-blog .container{ text-align:center; }
+.blog-scroller{
+	display:flex; gap: var(--sp-3); overflow-x:auto;
+	padding: var(--sp-1) 24px var(--sp-2);
+	scroll-snap-type: x proximity;
+	max-width: calc(var(--container) + 48px); margin:0 auto;
+	cursor: grab;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	user-select: none;
+	justify-content: safe center;
+}
+.blog-scroller::-webkit-scrollbar{ display:none; }
+.blog-scroller.is-dragging{ cursor: grabbing; scroll-snap-type: none; }
+
+.blog-card{
+	flex: 0 0 240px; scroll-snap-align:start;
+	background:#fff; border-radius: var(--radius-m); overflow:hidden;
+	border:1px solid var(--c-line); display:block;
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+.blog-scroller:not(.is-dragging) .blog-card:hover{
+	transform: translateY(-6px) rotate(.6deg);
+	box-shadow: 0 18px 32px rgba(36,31,30,.10);
+}
+.blog-card-photo{ height:280px; background: var(--c-taupe); overflow:hidden; }
+.blog-card-photo img{ width:100%; height:100%; object-fit:cover; }
+.blog-card-photo-placeholder{ width:100%; height:100%; background: var(--c-taupe); }
+.blog-card-info{ padding: var(--sp-2); }
+.blog-card-info h3{ font-size:.98rem; font-weight:700; line-height:1.7; }
+
+/* ==========================================================================
+   اینستاگرام
+   ========================================================================== */
+.section-instagram-promo{
+	background: linear-gradient(90deg, #4f5bd5, #962fbf, #d62976, #fa7e1e, #feda75);
+	color:#fff; overflow:visible; position:relative;
+	padding: 12px 0 var(--sp-4);
+	isolation: isolate;
+}
+.ig-promo-watermark{
+	position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+	font-size: clamp(3.5rem, 13vw, 9rem); font-weight:900; letter-spacing:4px;
+	color: rgba(255,255,255,.10); white-space:nowrap; pointer-events:none;
+	z-index:0; font-family: Arial, Helvetica, sans-serif;
+}
+.ig-promo-grid{
+	display:grid; grid-template-columns: .9fr 1.1fr; gap: var(--sp-4); align-items:center;
+	position:relative; z-index:1;
+}
+.section-instagram-promo.ig-promo-reverse .ig-promo-grid{ grid-template-columns: 1.1fr .9fr; }
+.section-instagram-promo.ig-promo-reverse .ig-promo-media{ order:2; }
+.section-instagram-promo.ig-promo-reverse .ig-promo-text{ order:1; }
+.ig-promo-text h2{ font-size: clamp(1.5rem,3vw,2.2rem); font-weight:800; margin-bottom: var(--sp-2); }
+.ig-promo-text p{ color: rgba(255,255,255,.92); margin-bottom: var(--sp-3); max-width:480px; }
+.btn-ig{ background:#fff; color:#d62976; }
+.btn-ig:hover{ background: rgba(255,255,255,.9); transform: translateY(-2px); }
+
+.ig-promo-media{ display:flex; justify-content:center; position:relative; z-index:2; }
+.ig-promo-phone{
+	max-width:230px; margin: -90px 0 -10px; animation: noghre-phone-swing 5s ease-in-out infinite;
+	transform-origin: bottom center;
+}
+.ig-promo-phone img{ width:100%; height:auto; filter: drop-shadow(0 24px 36px rgba(0,0,0,.3)); }
+.ig-promo-phone-placeholder{
+	width:200px; height:340px; border-radius: 32px; background: rgba(255,255,255,.15);
+	display:flex; align-items:center; justify-content:center; color:#fff;
+	border:2px solid rgba(255,255,255,.3); margin: -20px 0;
+}
+@keyframes noghre-phone-swing{
+	0%, 100%{ transform: rotate(-4deg); }
+	50%{ transform: rotate(4deg); }
+}
+@media (max-width: 900px){
+	.ig-promo-grid, .section-instagram-promo.ig-promo-reverse .ig-promo-grid{ grid-template-columns: 1fr; text-align:center; }
+	.ig-promo-text p{ margin-inline:auto; }
+	.section-instagram-promo.ig-promo-reverse .ig-promo-media,
+	.section-instagram-promo.ig-promo-reverse .ig-promo-text{ order:initial; }
+	.ig-promo-phone{ margin: -36px auto 0; }
+}
+
+/* ==========================================================================
+   تبلیغات بین متن مطلب و دیدگاه‌ها
+   ========================================================================== */
+.post-ads{
+	display:grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3);
+	margin: var(--sp-4) 0;
+}
+.post-ad-col{
+	background:#fff; border:1px solid var(--c-line); border-radius: var(--radius-m);
+	overflow:hidden; display:flex; align-items:center; justify-content:center;
+}
+.post-ad-col img{ width:100%; height:auto; display:block; }
+@media (max-width: 640px){
+	.post-ads{ grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   تماس
+   ========================================================================== */
+.section-contact{ text-align:center; }
+.contact-grid{ display:flex; flex-direction:column; align-items:center; gap: var(--sp-2); }
+.contact-grid p{ color: var(--c-ink-soft); margin-bottom: var(--sp-2); }
+.contact-btns{ display:flex; gap: var(--sp-2); flex-wrap:wrap; justify-content:center; }
+
+.contact-grid-2col{
+	display:grid; grid-template-columns: 1fr 1fr; align-items:stretch; gap: var(--sp-4);
+	text-align:right; margin-top: var(--sp-2);
+}
+.contact-info-col{ display:flex; flex-direction:column; justify-content:center; gap: var(--sp-3); }
+.contact-info-top p{ margin-bottom: var(--sp-2); color: var(--c-ink-soft); }
+.contact-info-bottom{ width:100%; }
+
+.discount-box{
+	background: var(--c-blush); border:1px solid rgba(122,46,56,.15);
+	border-radius: var(--radius-m); padding: var(--sp-3);
+	text-align:right;
+}
+.discount-box-title{ font-weight:700; margin-bottom: var(--sp-2); color: var(--c-ink); }
+.discount-form{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+.discount-input{
+	flex:1 1 160px !important; width:auto !important;
+	height:42px !important; min-height:0 !important; max-height:none !important;
+	padding:0 14px !important; margin:0 !important;
+	border:1px solid var(--c-line) !important; border-radius: var(--radius-s) !important;
+	background:#fff !important; font-size:16px !important; font-family:inherit !important;
+	line-height:normal !important; box-sizing:border-box !important; display:inline-block !important;
+}
+.discount-submit{
+	flex:0 0 auto !important; height:42px !important; min-height:0 !important; max-height:none !important;
+	padding:0 22px !important; margin:0 !important; text-align:center !important; line-height:normal !important;
+	font-size:.9rem !important;
+}
+.discount-form-message{ margin-top:10px; font-size:.85rem; min-height:1.2em; }
+.discount-form-message.is-error{ color:#b3261e; }
+.discount-form-message.is-success{ color:#1e7a3d; }
+.noghre-honeypot{ position:absolute !important; left:-9999px !important; top:-9999px !important; }
+.noghre-longpress-hint{ font-size:.82rem; color: var(--c-ink-soft); margin:0; }
+.noghre-captcha-longpress{ margin-bottom: var(--sp-3); }
+.noghre-longpress-fill{
+	background-image: linear-gradient( rgba(255,255,255,.4), rgba(255,255,255,.4) );
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-size: 0% 100%;
+	transition: background-size .2s ease;
+}
+.noghre-longpress-fill.is-filling{
+	background-size: 100% 100%;
+	transition: background-size 2s linear;
+}
+.noghre-captcha{ flex:1 1 100%; display:flex; flex-direction:column; gap:6px; margin-bottom: var(--sp-3); }
+.noghre-captcha label{ font-size:.82rem; color: var(--c-ink-soft); display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+.noghre-captcha-refresh{
+	display:inline-flex; align-items:center; justify-content:center;
+	width:24px; height:24px; border-radius:50%; border:1px solid var(--c-line);
+	background:#fff; color: var(--c-ink-soft); font-size:14px; line-height:1; padding:0;
+	transition: transform .3s ease, background .2s ease;
+}
+.noghre-captcha-refresh:hover{ background: var(--c-bg-alt); transform: rotate(90deg); }
+.noghre-captcha-input{
+	width:110px !important; height:38px !important; padding:0 10px !important; border:1px solid var(--c-line) !important; border-radius: var(--radius-s) !important;
+	background:#fff !important; font-size:16px !important; line-height:normal !important; text-align:center !important; box-sizing:border-box !important;
+}
+@media (max-width: 600px){
+	.discount-box{ padding: 14px; }
+	.discount-form{ flex-direction:column; align-items:stretch; gap:8px; }
+	.discount-input{ flex: 0 0 auto !important; width:100% !important; height:40px !important; font-size:16px !important; }
+	.noghre-captcha{ flex: 0 0 auto !important; }
+	.discount-submit{
+		width:auto !important; height:36px !important; margin-inline-start:auto !important;
+		padding:0 20px !important; font-size:.85rem !important;
+	}
+}
+.contact-map-col{ min-height:260px; }
+.contact-map-embed{
+	height:100%; min-height:260px; border-radius: var(--radius-m); overflow:hidden;
+	border:1px solid var(--c-line);
+}
+.contact-map-embed iframe{ width:100%; height:100%; min-height:260px; border:0; display:block; }
+@media (max-width: 860px){
+	.contact-grid-2col{ grid-template-columns:1fr; text-align:center; }
+	.contact-info-col{ align-items:center; }
+	.contact-map-col{ min-height:280px; }
+}
+
+/* ==========================================================================
+   فوتر
+   ========================================================================== */
+.site-footer{ background: var(--c-ink); color: rgba(255,255,255,.82); margin-top: var(--sp-5); }
+.footer-grid{
+	display:grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: var(--sp-4);
+	padding: var(--sp-5) 24px var(--sp-4);
+}
+.footer-logo{ color:#fff; font-size:1.2rem; margin-bottom: var(--sp-2); }
+.footer-about img{ max-height:44px; margin-bottom: var(--sp-2); filter: brightness(0) invert(1); }
+.footer-about p{ font-size:.92rem; line-height:1.9; margin-bottom: var(--sp-2); }
+.footer-social{ display:flex; gap:10px; }
+.footer-social a{
+	width:36px; height:36px; border-radius:50%; border:1px solid rgba(255,255,255,.25);
+	display:flex; align-items:center; justify-content:center; transition: background .2s ease;
+}
+.footer-social a:hover{ background: var(--c-accent); border-color: var(--c-accent); }
+
+.footer-divider{
+	border:none; border-top:1px dashed rgba(255,255,255,.22);
+	margin: var(--sp-2) 0;
+}
+.footer-inline-menu{ display:flex; flex-wrap:wrap; align-items:center; gap:4px; font-size:.88rem; }
+.footer-inline-menu li{ display:flex; align-items:center; }
+.footer-inline-menu a:hover{ color: var(--c-gold); }
+.footer-inline-menu li:not(:last-child)::after{
+	content:'-'; margin-inline-start:8px; color: rgba(255,255,255,.4);
+}
+
+.footer-col h4{ color:#fff; font-size:1rem; margin-bottom: var(--sp-2); font-weight:700; }
+.footer-menu li, .footer-contact li, .footer-hours li{ margin-bottom:10px; font-size:.92rem; }
+.footer-menu a:hover{ color: var(--c-gold); }
+.footer-contact li{ display:flex; align-items:flex-start; gap:8px; }
+.footer-contact a:hover{ color: var(--c-gold); }
+.footer-hours li{ color: rgba(255,255,255,.75); border-bottom:1px dashed rgba(255,255,255,.12); padding-bottom:8px; }
+.footer-hours li:last-child{ border-bottom:none; }
+
+.footer-license-rotator{
+	position:relative;
+	min-height: 220px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.footer-license-slide{
+	position:absolute; inset:0;
+	display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; gap:8px;
+	opacity:0; visibility:hidden; transition: opacity .5s ease;
+}
+.footer-license-slide.is-active{ opacity:1; visibility:visible; position:relative; }
+.footer-license-slide img{
+	max-height: 180px;
+	max-width: 100%;
+	border-radius: var(--radius-s);
+	background:#fff;
+	padding: 8px;
+	object-fit: contain;
+}
+.footer-license-slide span{ font-size:.85rem; color: rgba(255,255,255,.7); text-align:right; }
+.footer-license-embed{
+	background:#fff; border-radius: var(--radius-s); padding:10px;
+	display:inline-flex; align-items:center; justify-content:center;
+	max-width: 100%;
+}
+.footer-license-embed img,
+.footer-license-embed iframe{ max-height: 180px; max-width: 100%; }
+
+@media (max-width: 768px){
+	.footer-license-rotator{
+		display:flex; flex-wrap:nowrap; gap: var(--sp-2);
+		overflow-x:auto;
+		min-height: auto;
+		padding-bottom:6px;
+		-webkit-overflow-scrolling:touch;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+	.footer-license-slide{
+		position:static !important;
+		opacity:1 !important;
+		visibility:visible !important;
+		flex:0 0 auto;
+		align-items:center;
+		text-align:center;
+		min-width: 140px;
+	}
+	.footer-license-slide img{ max-height: 120px; }
+	.footer-license-embed img,
+	.footer-license-embed iframe{ max-height: 120px; }
+}
+
+.footer-bottom{ border-top:1px solid rgba(255,255,255,.12); }
+.footer-bottom .container{ padding-top: var(--sp-2); padding-bottom: var(--sp-2); }
+.footer-bottom-inner{
+	display:flex; align-items:center; justify-content:space-between; gap: var(--sp-2); flex-wrap:wrap;
+}
+.footer-bottom p{ font-size:.85rem; color: rgba(255,255,255,.6); margin:0; }
+.footer-bottom a{ color: var(--c-gold); font-weight:600; }
+
+@media (max-width: 640px){
+	.footer-bottom-inner{ justify-content:center; text-align:center; }
+	.footer-rights{ display:none; }
+}
+
+@media (max-width: 900px){
+	.footer-grid{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px){
+	.footer-grid{ grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   صفحه / تک‌نوشته / آرشیو
+   ========================================================================== */
+.page-title{ font-size: clamp(1.6rem,3vw,2.3rem); font-weight:800; margin-bottom: var(--sp-3); }
+.page-thumb, .entry-thumb{ border-radius: var(--radius-m); overflow:hidden; margin-bottom: var(--sp-3); }
+.entry-content, .entry-content p{ color: var(--c-ink-soft); }
+.entry-content{ line-height:2; }
+.entry-content h2, .entry-content h3{ color: var(--c-ink); margin: var(--sp-3) 0 var(--sp-1); }
+.entry-content img{ border-radius: var(--radius-m); }
+.entry-header{ margin-bottom: var(--sp-3); }
+.entry-title{ font-size: clamp(1.6rem,3vw,2.3rem); font-weight:800; margin-bottom: var(--sp-1); }
+.entry-meta{ display:flex; gap: var(--sp-2); color: var(--c-ink-soft); font-size:.88rem; }
+.entry-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top: var(--sp-3); }
+.entry-thumb-centered{ max-width: 800px; margin-inline:auto; }
+.featured-special{
+	position:relative; padding:10px; border-radius: calc(var(--radius-m) + 8px);
+	background: linear-gradient(135deg, var(--c-gold), var(--c-blush) 45%, var(--c-gold));
+	box-shadow: 0 20px 40px rgba(36,31,30,.16);
+	animation: noghre-featured-reveal .8s ease both;
+}
+.featured-special img{
+	border-radius: var(--radius-m); display:block; width:100%; height:auto;
+}
+@keyframes noghre-featured-reveal{
+	0%{ opacity:0; transform: scale(.94) translateY(14px); }
+	100%{ opacity:1; transform: scale(1) translateY(0); }
+}
+
+.noghre-breadcrumb{
+	display:flex; align-items:center; flex-wrap:wrap; gap:6px;
+	font-size:.85rem; color: var(--c-ink-soft); margin-bottom: var(--sp-2);
+}
+.noghre-breadcrumb a{ color: var(--c-ink-soft); }
+.noghre-breadcrumb a:hover{ color: var(--c-accent); }
+.noghre-breadcrumb a:last-child{ color: var(--c-accent); font-weight:600; }
+.crumb-sep{ color: var(--c-taupe); }
+.entry-meta-row{
+	display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;
+	margin-top: var(--sp-4); padding-top: var(--sp-3);
+	border-top: 1px dashed var(--c-line);
+}
+.entry-hashtags{ display:flex; flex-wrap:wrap; gap:8px; }
+.entry-date{ font-size:.85rem; color: var(--c-ink-soft); white-space:nowrap; margin-inline-start:auto; }
+.hashtag-pill{
+	display:inline-flex; align-items:center; font-size:.85rem; font-weight:600;
+	color: var(--c-accent); background: var(--c-blush);
+	padding:6px 14px; border-radius:999px; transition: background .2s ease, color .2s ease;
+}
+.hashtag-pill:hover{ background: var(--c-accent); color:#fff; }
+.editor-content p{ margin-bottom:10px; }
+.post-nav{ display:flex; justify-content:space-between; padding: var(--sp-3) 0; border-top:1px solid var(--c-line); margin-top: var(--sp-3); font-weight:600; }
+
+.archive-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: var(--sp-3); }
+.archive-card{ background:#fff; border:1px solid var(--c-line); border-radius: var(--radius-m); overflow:hidden; }
+.archive-card-thumb{ display:block; aspect-ratio: 4/3; background: var(--c-taupe); overflow:hidden; }
+.archive-card-thumb img{ width:100%; height:100%; object-fit:cover; }
+.archive-card-thumb-placeholder{ width:100%; height:100%; background: var(--c-taupe); }
+.archive-card-body{ padding: var(--sp-2); }
+.archive-card-body h2{ font-size:1.05rem; margin-bottom:8px; }
+.archive-card-body p{ color: var(--c-ink-soft); font-size:.9rem; margin-bottom:10px; }
+.read-more{ color: var(--c-accent); font-weight:600; font-size:.9rem; }
+
+@media (max-width: 900px){ .archive-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px){ .archive-grid{ grid-template-columns: 1fr; } }
+
+.nav-links{ display:flex; justify-content:center; gap: var(--sp-2); margin-top: var(--sp-4); }
+.nav-links a, .nav-links span{ padding:8px 14px; border:1px solid var(--c-line); border-radius:8px; }
+.nav-links .current{ background: var(--c-accent); color:#fff; border-color: var(--c-accent); }
+
+/* ==========================================================================
+   دیدگاه‌ها
+   ========================================================================== */
+.comments-area{ margin-top: var(--sp-5); padding-top: var(--sp-4); border-top:1px solid var(--c-line); }
+.comments-toggle{
+	display:flex; align-items:center; gap:10px; width:100%;
+	background: var(--c-bg-alt); border:1px solid var(--c-line); border-radius: var(--radius-m);
+	padding: 16px 20px; font-size:1rem; font-weight:700; color: var(--c-ink);
+}
+.comments-toggle svg{ transition: transform .3s ease; }
+.comments-toggle[aria-expanded="true"] svg{ transform: rotate(180deg); }
+.comments-drawer-panel{
+	display:grid; grid-template-rows: 0fr;
+	transition: grid-template-rows .45s cubic-bezier(.22,1,.36,1);
+}
+.comments-drawer-panel.is-open{ grid-template-rows: 1fr; }
+.comments-drawer-inner{ overflow:hidden; }
+.comments-drawer-panel .comments-drawer-inner{ padding-top: var(--sp-3); }
+.comments-title{ font-size:1.3rem; font-weight:800; margin-bottom: var(--sp-3); }
+
+.comment-list{ margin:0; padding:0; list-style:none; }
+.comment-list .children{ list-style:none; margin:0; padding-inline-start: 46px; }
+
+.noghre-comment{ margin-bottom: var(--sp-3); }
+.noghre-comment-inner{ display:flex; gap: var(--sp-2); align-items:flex-start; }
+.noghre-comment-avatar img{ border-radius:50%; display:block; }
+.noghre-comment-body{
+	flex:1; background:#fff; border:1px solid var(--c-line); border-radius: var(--radius-m);
+	padding: var(--sp-2) var(--sp-3);
+}
+.noghre-comment-meta{ display:flex; align-items:center; gap:10px; margin-bottom:6px; flex-wrap:wrap; }
+.noghre-comment-author{ font-weight:700; }
+.noghre-comment-date a{ font-size:.85rem; color: var(--c-ink-soft); }
+.noghre-comment-pending{
+	font-size:.78rem; color: var(--c-gold); border:1px solid var(--c-gold);
+	border-radius:999px; padding:2px 10px;
+}
+.noghre-comment-content{ color: var(--c-ink-soft); font-size:.95rem; line-height:1.9; }
+.noghre-comment-content p{ margin-bottom:8px; }
+.noghre-comment-reply{ margin-top:8px; }
+.noghre-comment-reply a{ font-size:.85rem; font-weight:700; color: var(--c-accent); }
+
+#respond{
+	background: var(--c-bg-alt); border-radius: var(--radius-m);
+	padding: var(--sp-3); margin-top: var(--sp-3);
+}
+#respond .comment-reply-title{ font-size:1.1rem; font-weight:800; margin-bottom: var(--sp-2); }
+.comment-form-comment label,
+.comment-form-author label,
+.comment-form-email label,
+.comment-form-url label{
+	display:block; font-size:.9rem; font-weight:600; margin-bottom:6px;
+}
+#respond input[type="text"],
+#respond input[type="email"],
+#respond input[type="url"],
+#respond textarea{
+	width:100%; padding:12px 14px; border:1px solid var(--c-line); border-radius: var(--radius-s);
+	background:#fff; font-size:16px;
+}
+#respond textarea{ resize: vertical; }
+.comment-form-cookies-consent{ display:flex; align-items:center; gap:8px; margin:10px 0; font-size:.85rem; }
+#respond p{ margin-bottom: var(--sp-2); }
+#respond .form-submit{ margin-bottom:0; }
+.noghre-captcha-field{ margin-bottom: var(--sp-2); }
+
+@media (max-width: 600px){
+	.comment-list .children{ padding-inline-start:18px; }
+	.noghre-comment-inner{ gap: var(--sp-1); }
+}
+
+/* ==========================================================================
+   فرم رزرو وقت
+   ========================================================================== */
+.noghre-booking-wrap{ max-width: 900px; margin: 0 auto; }
+.noghre-booking-desc{
+	margin-bottom: var(--sp-4); color: var(--c-ink-soft); line-height:1.9;
+	background: var(--c-bg-alt); border:1px solid var(--c-line); border-radius: var(--radius-m);
+	padding: var(--sp-3);
+}
+.noghre-booking-desc > *:last-child{ margin-bottom:0; }
+.noghre-booking-form{
+	background:#fff; border:1px solid var(--c-line); border-radius: var(--radius-m);
+	padding: var(--sp-4);
+}
+.noghre-booking-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); margin-bottom: var(--sp-3); }
+.noghre-booking-col p{ margin-bottom: var(--sp-2); }
+.noghre-booking-col label{ display:block; font-size:.9rem; font-weight:600; margin-bottom:6px; }
+.noghre-booking-col input,
+.noghre-booking-col select{
+	width:100%; height:44px; padding:0 14px; border:1px solid var(--c-line); border-radius: var(--radius-s);
+	background:#fff; font-family:inherit; font-size:16px; box-sizing:border-box;
+}
+.noghre-booking-col select[multiple]{ height:auto; padding:8px; }
+.noghre-discount-check-row{ display:flex; gap:8px; }
+.noghre-discount-check-row input{ flex:1; }
+.noghre-discount-check-btn{ flex:0 0 auto; height:44px; padding:0 16px; font-size:.85rem; white-space:nowrap; }
+.noghre-discount-check-message{ display:block; margin-top:6px; font-size:.82rem; }
+.noghre-discount-check-message.is-error{ color:#b3261e; }
+.noghre-discount-check-message.is-success{ color:#1e7a3d; }
+.noghre-multiselect{ position:relative; }
+.noghre-multiselect summary{
+	list-style:none; cursor:pointer; height:44px; padding:0 14px;
+	border:1px solid var(--c-line); border-radius: var(--radius-s); background:#fff;
+	display:flex; align-items:center; font-size:16px; color: var(--c-ink-soft);
+}
+.noghre-multiselect summary::-webkit-details-marker{ display:none; }
+.noghre-multiselect summary::after{
+	content:'▾'; margin-inline-start:auto; color: var(--c-ink-soft);
+}
+.noghre-multiselect[open] summary::after{ content:'▴'; }
+.noghre-multiselect-panel{
+	position:absolute; z-index:20; top:calc(100% + 4px); right:0; left:0;
+	background:#fff; border:1px solid var(--c-line); border-radius: var(--radius-s);
+	box-shadow: 0 12px 28px rgba(36,31,30,.12); padding:10px; max-height:220px; overflow-y:auto;
+}
+.noghre-multiselect-option{
+	display:flex; align-items:center; gap:8px; padding:8px 6px; font-size:.92rem; cursor:pointer;
+	border-radius:6px;
+}
+.noghre-multiselect-option input[type="checkbox"]{
+	width:16px; height:16px; margin:0; flex:0 0 auto; accent-color: var(--c-accent);
+}
+.noghre-multiselect-option:hover{ background: var(--c-bg-alt); }
+.noghre-booking-payment-note{
+	background: var(--c-blush); border-radius: var(--radius-s); padding: 14px 16px;
+	font-size:.88rem; color: var(--c-ink); margin-bottom: var(--sp-3);
+}
+.noghre-booking-submit{ width:100%; justify-content:center; }
+.noghre-booking-message{ margin-top: var(--sp-2); font-size:.9rem; text-align:center; }
+.noghre-booking-message.is-error{ color:#b3261e; }
+.noghre-booking-message.is-success{ color:#1e7a3d; }
+@media (max-width: 760px){
+	.noghre-booking-grid{ grid-template-columns: 1fr; }
+}
+
+.noghre-booking-lookup{ max-width:480px; margin:0 auto; text-align:center; }
+.noghre-booking-lookup-row{ display:flex; gap:10px; margin-top: var(--sp-2); }
+.noghre-booking-lookup-row input{ flex:1; height:44px; padding:0 14px; border:1px solid var(--c-line); border-radius: var(--radius-s); font-size:16px; }
+.noghre-booking-notice{ padding:14px 16px; border-radius: var(--radius-s); margin-bottom: var(--sp-3); font-size:.92rem; }
+.noghre-booking-notice.is-error{ background:#fdecea; color:#b3261e; }
+.noghre-booking-notice.is-success{ background:#e8f5e9; color:#1e7a3d; }
+.noghre-booking-notice.is-warning{ background:#e0f2f1; color:#00695c; }
+.noghre-booking-notice.is-info{ background:#e3f2fd; color:#0d47a1; }
+.noghre-status-badge{
+	display:inline-block; padding:6px 16px; border-radius:999px; font-weight:700; font-size:.85rem;
+	margin-bottom: var(--sp-2);
+}
+.noghre-status-badge.status-pending{ background:#fff8e1; color:#8a6100; }
+.noghre-status-badge.status-confirmed{ background:#e8f5e9; color:#1e7a3d; }
+.noghre-status-badge.status-edited{ background:#e3f2fd; color:#0d47a1; }
+.noghre-status-badge.status-used{ background:#e0f2f1; color:#00695c; }
+.noghre-status-badge.status-unused{ background:#fdecea; color:#b3261e; }
+.noghre-booking-qr{
+	text-align:center; background:#fff; border:1px solid var(--c-line); border-radius: var(--radius-m);
+	padding: var(--sp-3); margin-bottom: var(--sp-3);
+}
+#noghre-qr-canvas{ display:flex; justify-content:center; margin-bottom: var(--sp-2); }
+#noghre-qr-canvas canvas{ border-radius: var(--radius-s); }
+.noghre-booking-qr-caption{ font-size:.85rem; color: var(--c-ink-soft); margin:0 0 var(--sp-2); }
+.noghre-booking-print-btn{ font-size:.85rem; padding:8px 18px; }
+.noghre-bare-wrap{ max-width: 640px; margin: var(--sp-4) auto; padding: 0 16px; }
+
+body.noghre-bare-admin-view .noghre-topbar,
+body.noghre-bare-admin-view .site-header,
+body.noghre-bare-admin-view .site-header-spacer,
+body.noghre-bare-admin-view .site-footer,
+body.noghre-bare-admin-view .scroll-top-btn,
+body.noghre-bare-admin-view .page-header,
+body.noghre-bare-admin-view .page-title,
+body.noghre-bare-admin-view .noghre-breadcrumb,
+body.noghre-bare-admin-view .comments-area{ display:none !important; }
+body.noghre-bare-admin-view .section-page{ padding: var(--sp-3) 0; }
+
+.noghre-booking-table{ width:100%; border-collapse:collapse; margin: var(--sp-3) 0; }
+.noghre-booking-table th, .noghre-booking-table td{ text-align:right; padding:10px 8px; border-bottom:1px solid var(--c-line); font-size:.92rem; }
+.noghre-booking-table th{ color: var(--c-ink-soft); font-weight:600; width:35%; }
+.noghre-booking-admin-actions{
+	margin-top: var(--sp-4); padding-top: var(--sp-3); border-top:1px dashed var(--c-line);
+	display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start;
+}
+.noghre-booking-admin-actions h4{ width:100%; margin-bottom:6px; }
+
+/* ==========================================================================
+   لیست رزروها
+   ========================================================================== */
+.noghre-booking-list-wrap{
+	margin: var(--sp-3) 0;
+}
+.noghre-booking-list-toolbar{
+	display:flex; align-items:center; justify-content:space-between; gap:12px;
+	margin-bottom: var(--sp-2); flex-wrap:wrap;
+}
+.noghre-booking-list-search{
+	flex:1; min-width:220px; max-width:420px;
+	height:44px; padding:0 16px; border:1px solid var(--c-line);
+	border-radius: var(--radius-s); background:#fff;
+	font-size:16px; font-family:inherit;
+}
+.noghre-booking-list-search:focus{
+	outline:none; border-color: var(--c-accent);
+	box-shadow: 0 0 0 3px rgba(122,46,56,.10);
+}
+.noghre-booking-list-status-filter{
+	height:44px; padding:0 14px; border:1px solid var(--c-line);
+	border-radius: var(--radius-s); background:#fff;
+	font-size:16px; font-family:inherit;
+	min-width:160px;
+}
+.noghre-booking-list-status-filter:focus{
+	outline:none; border-color: var(--c-accent);
+	box-shadow: 0 0 0 3px rgba(122,46,56,.10);
+}
+.noghre-booking-list-count{
+	font-size:.9rem; color: var(--c-ink-soft); font-weight:600;
+}
+.noghre-booking-list-table-wrap{
+	overflow-x:auto; -webkit-overflow-scrolling:touch;
+	border-radius: var(--radius-m);
+	box-shadow: 0 2px 8px rgba(36,31,30,.06);
+	background:#fff;
+}
+.noghre-booking-list-table{
+	width:100%; border-collapse:collapse; background:#fff;
+	min-width:900px;
+}
+.noghre-booking-list-table th,
+.noghre-booking-list-table td{
+	padding:12px 14px; text-align:right; font-size:.9rem;
+	border-bottom:1px solid var(--c-line); vertical-align:middle;
+	white-space:nowrap;
+}
+.noghre-booking-list-table th{
+	background: var(--c-bg-alt); color: var(--c-ink);
+	font-weight:700; font-size:.88rem;
+}
+.noghre-booking-list-table tr:last-child td{ border-bottom:none; }
+.noghre-booking-list-table tbody tr:hover td{ background: var(--c-bg-alt); }
+.noghre-booking-list-table a{ color: var(--c-accent); }
+.noghre-list-sort{ display:inline-flex; align-items:center; gap:4px; }
+.noghre-list-empty td,
+.noghre-list-no-result td{
+	text-align:center; color: var(--c-ink-soft); padding:20px;
+}
+
+.noghre-booking-list-table .noghre-status-pill{ display:inline-block; padding:4px 12px; border-radius:999px; font-size:.8rem; font-weight:700; }
+.noghre-booking-list-table .noghre-status-pill.status-pending{ background:#fff8e1; color:#8a6100; }
+.noghre-booking-list-table .noghre-status-pill.status-confirmed{ background:#e8f5e9; color:#1e7a3d; }
+.noghre-booking-list-table .noghre-status-pill.status-edited{ background:#e3f2fd; color:#0d47a1; }
+.noghre-booking-list-table .noghre-status-pill.status-used{ background:#e0f2f1; color:#00695c; }
+.noghre-booking-list-table .noghre-status-pill.status-unused{ background:#fdecea; color:#b3261e; }
+
+.noghre-booking-list-table .noghre-sms-cell{
+	text-align:center; font-size:1.1rem;
+}
+
+.noghre-booking-list-pagination{
+	display:flex; flex-wrap:wrap; gap:6px; justify-content:center;
+	margin-top: var(--sp-2);
+}
+.noghre-page-btn{
+	display:inline-flex; align-items:center; justify-content:center;
+	min-width:38px; height:38px; padding:0 10px;
+	border:1px solid var(--c-line); border-radius: var(--radius-s);
+	background:#fff; color: var(--c-ink); font-size:.9rem; font-weight:600;
+	transition: all .15s ease;
+}
+.noghre-page-btn:hover{ background: var(--c-bg-alt); }
+.noghre-page-btn.is-active{
+	background: var(--c-accent); color:#fff; border-color: var(--c-accent);
+}
+
+@media (max-width: 700px){
+	.noghre-booking-list-table-wrap{
+		box-shadow:none; background:transparent;
+		overflow:visible;
+	}
+	.noghre-booking-list-table{
+		min-width:0; display:block; background:transparent;
+	}
+	.noghre-booking-list-table thead{ display:none; }
+	.noghre-booking-list-table tbody{ display:block; }
+	.noghre-booking-list-table tbody tr{
+		display:block; background:#fff; border:1px solid var(--c-line);
+		border-radius: var(--radius-m); margin-bottom:12px;
+		padding:6px 4px;
+		box-shadow: 0 2px 6px rgba(36,31,30,.05);
+	}
+	.noghre-booking-list-table tbody tr.noghre-list-empty,
+	.noghre-booking-list-table tbody tr.noghre-list-no-result{
+		padding:14px; text-align:center;
+	}
+	.noghre-booking-list-table tbody td{
+		display:flex; align-items:flex-start; justify-content:space-between;
+		gap:10px; padding:8px 12px; border-bottom:1px dashed var(--c-line);
+		white-space:normal; text-align:left; word-break:break-word;
+	}
+	.noghre-booking-list-table tbody tr td:last-child{ border-bottom:none; }
+	.noghre-booking-list-table tbody td::before{
+		content: attr(data-label);
+		font-weight:700; font-size:.82rem; color: var(--c-ink-soft);
+		flex:0 0 auto; min-width:80px; text-align:right;
+	}
+	.noghre-booking-list-table tbody td[dir="ltr"]{
+		direction:ltr; text-align:right;
+	}
+	.noghre-booking-list-table tbody td[dir="ltr"]::before{
+		direction:rtl;
+	}
+	.noghre-list-empty td::before,
+	.noghre-list-no-result td::before{ content:none; }
+}
+
+/* ==========================================================================
+   دکمه بازگشت به بالا
+   ========================================================================== */
+.scroll-top-btn{
+	position: fixed; bottom: 24px; left: 24px; z-index: 400;
+	width:48px; height:48px; border-radius:50%; border:none;
+	background: var(--c-accent); color:#fff;
+	display:flex; align-items:center; justify-content:center;
+	box-shadow: 0 10px 24px rgba(36,31,30,.22);
+	opacity:0; visibility:hidden; transform: translateY(10px);
+	transition: opacity .25s ease, transform .25s ease, visibility .25s ease, background .2s ease;
+}
+.scroll-top-btn.is-visible{ opacity:1; visibility:visible; transform: translateY(0); }
+.scroll-top-btn:hover{ background: var(--c-accent-2); }
+@media (max-width: 640px){
+	.scroll-top-btn{ bottom:16px; left:16px; width:42px; height:42px; }
+}
+
+/* ==========================================================================
+   ریسپانسیو کلی
+   ========================================================================== */
+@media (max-width: 640px){
+	.section{ padding: var(--sp-4) 0; }
+	.container{ padding: 0 16px; }
+}
+
+/* ==========================================================================
+   چاپ
+   ========================================================================== */
+@media print{
+	@page{ size: auto; margin: 10mm; }
+
+	html, body{
+		background: #fff !important;
+		background-image: none !important;
+		color: #000 !important;
+		height: auto !important;
+		overflow: visible !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		direction: rtl !important;
+	}
+
+	body::before,
+	body::after,
+	body.has-decorative-bg::before,
+	body.has-decorative-bg::after{
+		display: none !important;
+		content: none !important;
+		background: none !important;
+		border: none !important;
+	}
+
+	body.has-decorative-bg{
+		background-image: none !important;
+		background: #fff !important;
+	}
+
+	.site-header,
+	.site-footer,
+	.noghre-topbar,
+	.site-header-spacer,
+	.scroll-top-btn,
+	.noghre-booking-table,
+	.noghre-booking-admin-actions,
+	.noghre-booking-notice,
+	.noghre-breadcrumb,
+	.page-header,
+	.page-title,
+	.comments-area,
+	.noghre-booking-form,
+	.noghre-booking-wrap > .noghre-booking-desc,
+	header,
+	footer,
+	nav,
+	aside,
+	.noghre-booking-status > h3,
+	.noghre-status-badge{
+		display: none !important;
+	}
+
+	body *{
+		visibility: hidden !important;
+		background: transparent !important;
+		background-image: none !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+
+	body,
+	#page,
+	.site,
+	.site-content,
+	#content,
+	.section,
+	.container,
+	.container-narrow,
+	.section-single,
+	.section-page,
+	article,
+	.post,
+	.noghre-booking-status{
+		visibility: visible !important;
+		background: transparent !important;
+		background-image: none !important;
+	}
+
+	.noghre-booking-qr,
+	.noghre-booking-qr *{
+		visibility: visible !important;
+	}
+
+	.noghre-booking-qr{
+		visibility: visible !important;
+		position: static !important;
+		display: flex !important;
+		flex-direction: column !important;
+		align-items: center !important;
+		justify-content: center !important;
+		margin: 40px auto 0 !important;
+		padding: 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: #fff !important;
+		background-image: none !important;
+		box-shadow: none !important;
+		text-align: center !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		page-break-inside: avoid !important;
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+	}
+
+	.noghre-booking-print-btn{
+		display: none !important;
+		visibility: hidden !important;
+	}
+
+	#noghre-qr-canvas{
+		visibility: visible !important;
+		display: flex !important;
+		justify-content: center !important;
+		align-items: center !important;
+		margin: 0 auto 20px !important;
+		width: 100% !important;
+	}
+
+	#noghre-qr-canvas canvas{
+		visibility: visible !important;
+		width: 240px !important;
+		height: 240px !important;
+		max-width: 100% !important;
+		border: none !important;
+		border-radius: 0 !important;
+		box-shadow: none !important;
+		display: block !important;
+		margin: 0 auto !important;
+	}
+
+	.noghre-booking-qr-caption{
+		visibility: visible !important;
+		font-size: 13px !important;
+		line-height: 1.9 !important;
+		color: #000 !important;
+		margin: 0 !important;
+		padding: 0 10px !important;
+		text-align: center !important;
+		display: block !important;
+		width: 100% !important;
+		max-width: 320px !important;
+		direction: rtl !important;
+	}
+
+	.noghre-booking-qr-caption strong{
+		font-weight: 700 !important;
+		color: #000 !important;
+	}
+}
+
+/* ==========================================================================
+   اسکنر QR کد
+   ========================================================================== */
+.noghre-qr-scanner {
+	background: #fff;
+	margin: 12px;
+	padding: 14px;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(36,31,30,.06);
+	border: 1px solid rgba(36,31,30,.08);
+	direction: rtl;
+}
+.noghre-qr-scanner-header {
+	text-align: center;
+	margin-bottom: 12px;
+}
+.noghre-qr-scanner-header strong {
+	display: block;
+	font-size: 15px;
+	color: #241F1E;
+	margin-bottom: 6px;
+}
+.noghre-qr-scanner-header p {
+	font-size: 12px;
+	color: #5B524F;
+	line-height: 1.8;
+	margin: 0;
+}
+.noghre-qr-scanner-video-wrap {
+	position: relative;
+	background: #000;
+	border-radius: 12px;
+	overflow: hidden;
+	width: 100%;
+	max-width: 480px;
+	margin: 0 auto 12px;
+	min-height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.noghre-qr-scanner-video-wrap video {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	background: #000;
+}
+.noghre-qr-scanner-frame {
+	position: absolute;
+	top: 15%;
+	left: 15%;
+	right: 15%;
+	bottom: 15%;
+	border: 3px solid rgba(255,255,255,.9);
+	border-radius: 12px;
+	pointer-events: none;
+	box-shadow: 0 0 0 2000px rgba(0,0,0,.4);
+}
+.noghre-qr-scanner-status {
+	text-align: center;
+	font-size: 13px;
+	color: #5B524F;
+	line-height: 1.8;
+	min-height: 1.2em;
+	margin: 0 0 12px;
+	padding: 8px 12px;
+	background: #F3ECE6;
+	border-radius: 8px;
+}
+.noghre-qr-scanner-status.is-error {
+	color: #b3261e;
+	background: #fdecea;
+}
+.noghre-qr-scanner-status.is-success {
+	color: #1e7a3d;
+	background: #e8f5e9;
+}
+.noghre-qr-scanner-btn {
+	display: block;
+	width: 100%;
+	max-width: 320px;
+	margin: 0 auto 8px;
+	height: 44px;
+	border: none;
+	border-radius: 8px;
+	background: #7A2E38;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	font-family: inherit;
+	cursor: pointer;
+	transition: background .15s;
+}
+.noghre-qr-scanner-btn:hover { background: #5C2129; }
+.noghre-qr-scanner-btn:disabled { opacity: .6; cursor: not-allowed; }
+.noghre-qr-scanner-btn.is-secondary {
+	background: #fff;
+	color: #7A2E38;
+	border: 1px solid #7A2E38;
+}
+.noghre-qr-scanner-btn.is-secondary:hover { background: #FBF7F4; }
+
+/* ==========================================================================
+   باکس ثبت شماره مشتری
+   ========================================================================== */
+.noghre-app-signup-box {
+	background: #fff;
+	margin: 12px;
+	padding: 14px;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(36,31,30,.06);
+	border: 1px solid rgba(36,31,30,.08);
+	direction: rtl;
+}
+.noghre-app-signup-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 12px;
+}
+.noghre-app-signup-header strong { font-size: 14px; color: #241F1E; }
+.noghre-app-signup-count {
+	font-size: 12px;
+	color: #7A2E38;
+	background: #EFDCD9;
+	padding: 3px 10px;
+	border-radius: 999px;
+	font-weight: 600;
+}
+.noghre-app-signup-form {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.noghre-app-signup-form input {
+	height: 42px;
+	padding: 0 14px;
+	border: 1px solid rgba(36,31,30,.12);
+	border-radius: 8px;
+	font-size: 15px;
+	font-family: inherit;
+	background: #FBF7F4;
+}
+.noghre-app-signup-form input:focus {
+	outline: none;
+	border-color: #7A2E38;
+	background: #fff;
+}
+.noghre-app-signup-form button {
+	height: 38px;
+	padding: 0 24px;
+	border: none;
+	border-radius: 8px;
+	background: #7A2E38;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 600;
+	font-family: inherit;
+	cursor: pointer;
+	transition: background .15s;
+	align-self: center;
+	min-width: 120px;
+}
+.noghre-app-signup-form button:hover { background: #5C2129; }
+.noghre-app-signup-form button:disabled { opacity: .6; cursor: wait; }
+.noghre-app-signup-message {
+	margin: 10px 0 0;
+	font-size: 13px;
+	line-height: 1.7;
+	min-height: 1.2em;
+	text-align: center;
+}
+.noghre-app-signup-message.is-success { color: #1e7a3d; }
+.noghre-app-signup-message.is-error { color: #b3261e; }
+.noghre-app-signup-message.is-warning { color: #8a6100; }
+
+/* ==========================================================================
+   اپ موبایل — PWA + back سمت چپ
+   ========================================================================== */
+.noghre-mobile-app {
+	direction: rtl;
+	min-height: 100vh;
+	background: #FBF7F4;
+	font-family: Vazirmatn, Tahoma, sans-serif;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 70px;
+	overflow-x: hidden;
+}
+.noghre-app-header {
+	background: linear-gradient(135deg, #7A2E38, #5C2129);
+	color: #fff;
+	padding: 16px;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+.noghre-app-header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 12px;
+	gap: 8px;
+}
+.noghre-app-brand { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+.noghre-app-brand strong { display: block; font-size: 15px; }
+.noghre-app-brand small { font-size: 11px; opacity: .8; }
+.noghre-app-logo {
+	width: 40px; height: 40px;
+	background: rgba(255,255,255,.2);
+	border-radius: 50%;
+	display: flex; align-items: center; justify-content: center;
+	font-weight: 800; font-size: 18px;
+	flex-shrink: 0;
+}
+
+/* دکمه back — سمت چپ هدر (جای قبلی ضربدر) */
+.noghre-app-back {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	background: rgba(255,255,255,.18);
+	border-radius: 50%;
+	color: #fff !important;
+	text-decoration: none;
+	transition: background .15s ease, transform .15s ease;
+	flex-shrink: 0;
+	cursor: pointer;
+	margin-inline-start: auto;
+	order: 99;
+}
+.noghre-app-back:hover { background: rgba(255,255,255,.3); }
+.noghre-app-back:active { transform: scale(.94); }
+.noghre-app-back svg { display: block; color: #fff; }
+.noghre-app-back-hidden { visibility: hidden; pointer-events: none; }
+
+.noghre-app-search-wrap { display: flex; gap: 8px; }
+.noghre-app-search-wrap input {
+	flex: 1;
+	height: 40px;
+	padding: 0 14px;
+	border: none;
+	border-radius: 8px;
+	font-size: 14px;
+	font-family: inherit;
+	background: rgba(255,255,255,.95);
+}
+.noghre-app-search-wrap input:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(255,255,255,.5);
+}
+.noghre-app-search-wrap select {
+	height: 40px;
+	padding: 0 12px;
+	border: none;
+	border-radius: 8px;
+	font-size: 13px;
+	font-family: inherit;
+	background: rgba(255,255,255,.95);
+	min-width: 130px;
+}
+.noghre-app-search-wrap select:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(255,255,255,.5);
+}
+
+.noghre-app-body {
+	flex: 1;
+	padding: 12px;
+	transition: opacity .15s ease;
+}
+.noghre-app-body.is-loading {
+	opacity: .5;
+	pointer-events: none;
+}
+.noghre-app-body .noghre-booking-list-wrap { margin: 0; }
+.noghre-app-body .noghre-booking-list-toolbar { display: none; }
+.noghre-app-body .noghre-booking-status {
+	background: #fff;
+	border-radius: 12px;
+	padding: 16px;
+	box-shadow: 0 2px 8px rgba(36,31,30,.06);
+	border: 1px solid rgba(36,31,30,.08);
+	margin: 0;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-status > h3 {
+	display: none !important;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-status .noghre-status-badge {
+	display: block;
+	width: fit-content;
+	margin: 0 auto 16px;
+	padding: 8px 24px;
+	font-size: 14px;
+	text-align: center;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-notice {
+	padding: 10px 12px;
+	font-size: 13px;
+	border-radius: 8px;
+	margin-bottom: 12px;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-table th,
+.noghre-mobile-app .noghre-app-body .noghre-booking-table td {
+	font-size: 13px;
+	padding: 8px 6px;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-admin-actions {
+	margin-top: 16px;
+	padding-top: 12px;
+	gap: 8px;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-admin-actions h4 {
+	font-size: 14px;
+	margin-bottom: 4px;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-admin-actions .btn,
+.noghre-mobile-app .noghre-app-body .noghre-booking-admin-actions button {
+	font-size: 13px;
+	padding: 8px 14px;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-qr {
+	padding: 16px;
+	margin-bottom: 16px;
+}
+.noghre-mobile-app .noghre-app-body #noghre-qr-canvas canvas {
+	width: 180px !important;
+	height: 180px !important;
+}
+
+.noghre-app-bottom-bar {
+	position: fixed;
+	bottom: 0; left: 0; right: 0;
+	background: #fff;
+	border-top: 1px solid rgba(36,31,30,.10);
+	display: flex;
+	justify-content: space-around;
+	padding: 8px 0;
+	z-index: 100;
+	box-shadow: 0 -4px 12px rgba(0,0,0,.06);
+}
+.noghre-app-nav-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	text-decoration: none;
+	color: #5B524F;
+	font-size: 11px;
+	padding: 4px 12px;
+	border-radius: 8px;
+	transition: all .15s ease;
+	cursor: pointer;
+}
+.noghre-app-nav-item span { font-size: 20px; line-height: 1; }
+.noghre-app-nav-item img { width: 22px; height: 22px; object-fit: contain; display: block; }
+.noghre-app-nav-item.is-active { color: #7A2E38; background: #EFDCD9; }
+
+/* دکمه نصب PWA */
+.noghre-pwa-install-btn {
+	position: fixed;
+	bottom: 84px;
+	left: 12px;
+	background: linear-gradient(135deg, #7A2E38, #5C2129);
+	color: #fff;
+	border: none;
+	padding: 10px 16px;
+	border-radius: 24px;
+	font-family: inherit;
+	font-size: 13px;
+	font-weight: 600;
+	box-shadow: 0 6px 16px rgba(122,46,56,.35);
+	cursor: pointer;
+	z-index: 101;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	transition: transform .15s ease;
+}
+.noghre-pwa-install-btn:hover { transform: translateY(-2px); }
+.noghre-pwa-install-btn:active { transform: scale(.97); }
+
+/* در حالت standalone (نصب‌شده) */
+@media all and (display-mode: standalone) {
+	.noghre-pwa-install-btn { display: none !important; }
+	.noghre-app-header {
+		padding-top: max(16px, env(safe-area-inset-top));
+	}
+	.noghre-app-bottom-bar {
+		padding-bottom: max(8px, env(safe-area-inset-bottom));
+	}
+}
+
+/* برای iPhone notch */
+@supports (padding: max(0px)) {
+	.noghre-mobile-app {
+		padding-left: env(safe-area-inset-left);
+		padding-right: env(safe-area-inset-right);
+	}
+}
+
+/* ==========================================================================
+   صفحه ورود شناسه مدیریت
+   ========================================================================== */
+.noghre-admin-login-page {
+	direction: rtl;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #FBF7F4 0%, #EFDCD9 100%);
+	font-family: Vazirmatn, Tahoma, sans-serif;
+	padding: 40px 16px 16px;
+	position: relative;
+}
+.noghre-admin-login-page::before {
+	content: '';
+	position: fixed;
+	top: -100px; right: -100px;
+	width: 320px; height: 320px;
+	background: radial-gradient(circle, rgba(122,46,56,.08) 0%, transparent 70%);
+	border-radius: 50%;
+	pointer-events: none;
+}
+.noghre-admin-login-page::after {
+	content: '';
+	position: fixed;
+	bottom: -100px; left: -100px;
+	width: 260px; height: 260px;
+	background: radial-gradient(circle, rgba(176,141,87,.1) 0%, transparent 70%);
+	border-radius: 50%;
+	pointer-events: none;
+}
+.noghre-admin-login-card {
+	background: #fff;
+	border-radius: 20px;
+	box-shadow: 0 20px 60px rgba(122,46,56,.15);
+	padding: 44px 28px 28px;
+	width: 100%;
+	max-width: 400px;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+}
+.noghre-admin-login-logo {
+	position: absolute;
+	top: -34px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 68px;
+	height: 68px;
+	background: linear-gradient(135deg, #7A2E38, #5C2129);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 10px 24px rgba(122,46,56,.35);
+	border: 4px solid #fff;
+}
+.noghre-admin-login-logo span {
+	color: #fff;
+	font-weight: 800;
+	font-size: 28px;
+	line-height: 1;
+}
+.noghre-admin-login-title {
+	font-size: 20px;
+	font-weight: 800;
+	color: #241F1E;
+	margin: 20px 0 6px;
+}
+.noghre-admin-login-subtitle {
+	font-size: 13px;
+	color: #5B524F;
+	margin-bottom: 26px;
+	line-height: 1.7;
+}
+.noghre-admin-login-field {
+	text-align: right;
+	margin-bottom: 18px;
+}
+.noghre-admin-login-field label {
+	display: block;
+	font-size: 13px;
+	font-weight: 600;
+	color: #241F1E;
+	margin-bottom: 8px;
+}
+.noghre-admin-login-field input {
+	width: 100%;
+	height: 52px;
+	padding: 0 16px;
+	border: 2px solid rgba(36,31,30,.12);
+	border-radius: 12px;
+	font-size: 18px;
+	font-family: 'Segoe UI', Tahoma, sans-serif;
+	text-align: center;
+	letter-spacing: 4px;
+	font-weight: 700;
+	color: #7A2E38;
+	background: #FBF7F4;
+	box-sizing: border-box;
+	text-transform: uppercase;
+	transition: border-color .15s, box-shadow .15s, background .15s;
+}
+.noghre-admin-login-field input::placeholder {
+	color: rgba(122,46,56,.3);
+	letter-spacing: 2px;
+}
+.noghre-admin-login-field input:focus {
+	outline: none;
+	border-color: #7A2E38;
+	background: #fff;
+	box-shadow: 0 0 0 4px rgba(122,46,56,.1);
+}
+.noghre-admin-login-btn {
+	width: 100%;
+	height: 52px;
+	background: linear-gradient(135deg, #7A2E38, #5C2129);
+	color: #fff;
+	border: none;
+	border-radius: 12px;
+	font-size: 16px;
+	font-weight: 700;
+	font-family: inherit;
+	cursor: pointer;
+	transition: transform .15s ease, box-shadow .15s ease;
+	box-shadow: 0 8px 20px rgba(122,46,56,.3);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+}
+.noghre-admin-login-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 12px 28px rgba(122,46,56,.4);
+}
+.noghre-admin-login-btn:active {
+	transform: translateY(0);
+	box-shadow: 0 4px 12px rgba(122,46,56,.3);
+}
+.noghre-admin-login-btn:disabled {
+	opacity: .6;
+	cursor: wait;
+	transform: none;
+	box-shadow: 0 4px 12px rgba(122,46,56,.2);
+}
+.noghre-admin-login-message {
+	font-size: 13px;
+	line-height: 1.7;
+	min-height: 1.2em;
+	margin: 14px 0 0;
+	text-align: center;
+	font-weight: 500;
+}
+.noghre-admin-login-message.is-error { color: #b3261e; }
+.noghre-admin-login-message.is-success { color: #1e7a3d; }
+.noghre-admin-login-back {
+	display: inline-block;
+	margin-top: 22px;
+	font-size: 13px;
+	color: #5B524F;
+	text-decoration: none;
+	transition: color .15s;
+}
+.noghre-admin-login-back:hover {
+	color: #7A2E38;
+}
+
+/* ریسپانسیو */
+@media (max-width: 420px) {
+	.noghre-admin-login-card {
+		padding: 40px 20px 22px;
+		max-width: 100%;
+	}
+	.noghre-admin-login-title { font-size: 18px; }
+	.noghre-admin-login-field input { font-size: 16px; letter-spacing: 3px; height: 48px; }
+	.noghre-admin-login-btn { height: 48px; font-size: 15px; }
+}
+
+/* در حالت standalone (اپ نصب‌شده) */
+@media all and (display-mode: standalone) {
+	.noghre-admin-login-page {
+		padding-top: max(60px, env(safe-area-inset-top));
+	}
+}

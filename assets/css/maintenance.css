@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Noghre — Maintenance Mode
+   استایل صفحه «در دست تعمیر»
+   ========================================================================== */
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #FBF7F4;
+	font-family: Vazirmatn, Tahoma, sans-serif;
+	text-align: center;
+	color: #241F1E;
+	direction: rtl;
+}
+
+.noghre-maintenance-box {
+	padding: 40px;
+	max-width: 480px;
+}
+
+.noghre-maintenance-title {
+	font-size: 26px;
+	margin-bottom: 14px;
+	color: #7A2E38;
+}
+
+.noghre-maintenance-line {
+	width: 56px;
+	height: 3px;
+	background: #B08D57;
+	margin: 20px auto;
+	border-radius: 3px;
+}
+
+.noghre-maintenance-content {
+	font-size: 16px;
+	line-height: 1.9;
+	color: #5B524F;
+}
+
+.noghre-maintenance-content p {
+	margin: 0 0 10px;
+}
+
+.noghre-maintenance-content p:last-child {
+	margin-bottom: 0;
+}

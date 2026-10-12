@@ -1,0 +1,523 @@
+/* ==========================================================================
+   Noghre App — Shared Styles
+   استایل‌های مشترک بین اپ مدیر، اپ کاربران، و صفحه ورود
+   ========================================================================== */
+
+/* ---------- ریست داخل اپ ---------- */
+#wpadminbar, html { margin-top: 0 !important; }
+body.admin-bar .noghre-mobile-app { padding-top: 0 !important; }
+body.admin-bar { margin-top: 0 !important; }
+
+.noghre-mobile-app {
+	direction: rtl;
+	min-height: 100vh;
+	background: #FBF7F4;
+	font-family: Vazirmatn, Tahoma, sans-serif;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 70px;
+	overflow-x: hidden;
+}
+
+/* ---------- هدر اپ ---------- */
+.noghre-app-header {
+	background: linear-gradient(135deg, #7A2E38, #5C2129);
+	color: #fff;
+	padding: 16px;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+.noghre-app-header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 12px;
+	gap: 8px;
+}
+.noghre-app-brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex: 1;
+	min-width: 0;
+}
+.noghre-app-brand strong { display: block; font-size: 15px; }
+.noghre-app-brand small { font-size: 11px; opacity: .8; }
+
+.noghre-app-logo {
+	width: 40px;
+	height: 40px;
+	background: rgba(255,255,255,.2);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 800;
+	font-size: 18px;
+	flex-shrink: 0;
+}
+
+/* ---------- دکمه بازگشت ---------- */
+.noghre-app-back {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	background: rgba(255,255,255,.18);
+	border-radius: 50%;
+	color: #fff !important;
+	text-decoration: none;
+	transition: background .15s ease, transform .15s ease;
+	flex-shrink: 0;
+	cursor: pointer;
+	margin-inline-start: auto;
+	order: 99;
+}
+.noghre-app-back:hover { background: rgba(255,255,255,.3); }
+.noghre-app-back:active { transform: scale(.94); }
+.noghre-app-back svg { display: block; color: #fff; }
+.noghre-app-back .dashicons {
+	font-size: 22px;
+	width: 22px;
+	height: 22px;
+	line-height: 1;
+	color: #fff;
+}
+.noghre-app-back-hidden { visibility: hidden; pointer-events: none; }
+
+/* ---------- جستجو + فیلتر سراسری هدر ---------- */
+.noghre-app-search-wrap { display: flex; gap: 8px; }
+.noghre-app-search-wrap input {
+	flex: 1;
+	height: 40px;
+	padding: 0 14px;
+	border: none;
+	border-radius: 8px;
+	font-size: 14px;
+	font-family: inherit;
+	background: rgba(255,255,255,.95);
+}
+.noghre-app-search-wrap input:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(255,255,255,.5);
+}
+.noghre-app-search-wrap select {
+	height: 40px;
+	padding: 0 12px;
+	border: none;
+	border-radius: 8px;
+	font-size: 13px;
+	font-family: inherit;
+	background: rgba(255,255,255,.95);
+	min-width: 130px;
+}
+.noghre-app-search-wrap select:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(255,255,255,.5);
+}
+
+/* ---------- بدنه اپ ---------- */
+.noghre-app-body {
+	flex: 1;
+	padding: 12px;
+	transition: opacity .15s ease;
+}
+.noghre-app-body.is-loading {
+	opacity: .5;
+	pointer-events: none;
+}
+
+/* ---------- نوار پایین ---------- */
+.noghre-app-bottom-bar {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #fff;
+	border-top: 1px solid rgba(36,31,30,.10);
+	display: flex;
+	justify-content: space-around;
+	padding: 8px 0;
+	z-index: 100;
+	box-shadow: 0 -4px 12px rgba(0,0,0,.06);
+}
+.noghre-app-nav-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	text-decoration: none;
+	color: #5B524F;
+	font-size: 11px;
+	padding: 4px 12px;
+	border-radius: 8px;
+	transition: all .15s ease;
+	cursor: pointer;
+}
+.noghre-app-nav-item span { font-size: 20px; line-height: 1; }
+.noghre-app-nav-item img {
+	width: 22px;
+	height: 22px;
+	object-fit: contain;
+	display: block;
+}
+.noghre-app-nav-item .dashicons {
+	font-size: 22px;
+	width: 22px;
+	height: 22px;
+	line-height: 1;
+}
+.noghre-app-nav-item.is-active {
+	color: #7A2E38;
+	background: #EFDCD9;
+}
+
+/* ---------- نصب PWA ---------- */
+.noghre-pwa-install-btn {
+	position: fixed;
+	bottom: 84px;
+	left: 12px;
+	background: linear-gradient(135deg, #7A2E38, #5C2129);
+	color: #fff;
+	border: none;
+	padding: 10px 16px;
+	border-radius: 24px;
+	font-family: inherit;
+	font-size: 13px;
+	font-weight: 600;
+	box-shadow: 0 6px 16px rgba(122,46,56,.35);
+	cursor: pointer;
+	z-index: 101;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	transition: transform .15s ease;
+}
+.noghre-pwa-install-btn:hover { transform: translateY(-2px); }
+.noghre-pwa-install-btn:active { transform: scale(.97); }
+.noghre-pwa-install-btn .dashicons {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	line-height: 1;
+}
+
+@media all and (display-mode: standalone) {
+	.noghre-pwa-install-btn { display: none !important; }
+	.noghre-app-header { padding-top: max(16px, env(safe-area-inset-top)); }
+	.noghre-app-bottom-bar { padding-bottom: max(8px, env(safe-area-inset-bottom)); }
+}
+@supports (padding: max(0px)) {
+	.noghre-mobile-app {
+		padding-left: env(safe-area-inset-left);
+		padding-right: env(safe-area-inset-right);
+	}
+}
+
+/* ---------- اورلی آفلاین ---------- */
+.noghre-offline-overlay {
+	position: fixed;
+	top: 0; left: 0; right: 0; bottom: 0;
+	background: #FBF7F4;
+	z-index: 9999;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	direction: rtl;
+	font-family: Vazirmatn, Tahoma, sans-serif;
+	opacity: 0;
+	transition: opacity .3s ease;
+}
+.noghre-offline-overlay.is-visible { display: flex; opacity: 1; }
+.noghre-offline-content { text-align: center; padding: 20px; }
+.noghre-offline-icon {
+	color: #7A2E38;
+	margin-bottom: 20px;
+	animation: noghre-offline-pulse 2s ease-in-out infinite;
+}
+@keyframes noghre-offline-pulse {
+	0%, 100% { opacity: .5; }
+	50% { opacity: 1; }
+}
+.noghre-offline-text { font-size: 18px; font-weight: 700; color: #241F1E; margin: 0 0 8px; }
+.noghre-offline-subtext { font-size: 14px; color: #5B524F; margin: 0 0 16px; }
+.noghre-offline-retry { font-size: 12px; color: #7A2E38; margin: 0; }
+
+/* ---------- ممنوعیت انتخاب متن، به جز input/textarea ---------- */
+.noghre-mobile-app,
+.noghre-mobile-app * {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+}
+.noghre-mobile-app input,
+.noghre-mobile-app textarea,
+.noghre-mobile-app [contenteditable="true"] {
+	-webkit-user-select: text !important;
+	-moz-user-select: text !important;
+	-ms-user-select: text !important;
+	user-select: text !important;
+	-webkit-touch-callout: default !important;
+}
+.noghre-mobile-app a[href] {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+}
+
+/* ---------- نوتیفیکیشن شناور ---------- */
+.noghre-floating-notice {
+	position: fixed;
+	top: 80px;
+	left: 50%;
+	transform: translateX(-50%) translateY(-20px);
+	z-index: 10000;
+	max-width: calc(100vw - 40px);
+	width: max-content;
+	padding: 12px 20px;
+	border-radius: 12px;
+	font-family: Vazirmatn, Tahoma, sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.7;
+	text-align: center;
+	box-shadow: 0 8px 24px rgba(0,0,0,.15);
+	opacity: 0;
+	transition: opacity .3s ease, transform .3s ease;
+	pointer-events: none;
+}
+.noghre-floating-notice.is-visible {
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
+}
+.noghre-floating-notice.is-success { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+.noghre-floating-notice.is-error   { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+.noghre-floating-notice.is-warning { background: #fffbeb; color: #92400e; border: 1px solid #fcd34d; }
+.noghre-floating-notice.is-info    { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+
+/* ---------- اسپینر لودینگ ---------- */
+@keyframes noghre-spin { to { transform: rotate(360deg); } }
+
+.noghre-app-loading {
+	direction: rtl;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #FBF7F4;
+	font-family: Vazirmatn, Tahoma, sans-serif;
+}
+.noghre-app-loading-inner { text-align: center; }
+.noghre-app-loading-spinner {
+	width: 48px;
+	height: 48px;
+	border: 4px solid #EFDCD9;
+	border-top-color: #7A2E38;
+	border-radius: 50%;
+	animation: noghre-spin .8s linear infinite;
+	margin: 0 auto 16px;
+}
+.noghre-app-loading-text {
+	color: #5B524F;
+	font-size: 14px;
+	margin: 0;
+}
+
+/* ---------- پیام بدون دسترسی ---------- */
+.noghre-app-no-access {
+	padding: 40px 20px;
+	text-align: center;
+	font-family: Vazirmatn, Tahoma, sans-serif;
+}
+.noghre-app-no-access h2 { color: #7A2E38; }
+.noghre-app-no-access p { color: #5B524F; }
+
+/* ==========================================================================
+   Noghre App — Login Page (صفحه ورود با شناسه مدیریت)
+   ========================================================================== */
+
+.noghre-admin-login-page {
+	direction: rtl;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #FBF7F4 0%, #EFDCD9 100%);
+	font-family: Vazirmatn, Tahoma, sans-serif;
+	padding: 40px 16px 16px;
+	position: relative;
+}
+.noghre-admin-login-page::before {
+	content: '';
+	position: fixed;
+	top: -100px; right: -100px;
+	width: 320px; height: 320px;
+	background: radial-gradient(circle, rgba(122,46,56,.08) 0%, transparent 70%);
+	border-radius: 50%;
+	pointer-events: none;
+}
+.noghre-admin-login-page::after {
+	content: '';
+	position: fixed;
+	bottom: -100px; left: -100px;
+	width: 260px; height: 260px;
+	background: radial-gradient(circle, rgba(176,141,87,.1) 0%, transparent 70%);
+	border-radius: 50%;
+	pointer-events: none;
+}
+.noghre-admin-login-card {
+	background: #fff;
+	border-radius: 20px;
+	box-shadow: 0 20px 60px rgba(122,46,56,.15);
+	padding: 44px 28px 28px;
+	width: 100%;
+	max-width: 400px;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+}
+.noghre-admin-login-logo {
+	position: absolute;
+	top: -34px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 68px;
+	height: 68px;
+	background: linear-gradient(135deg, #7A2E38, #5C2129);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 10px 24px rgba(122,46,56,.35);
+	border: 4px solid #fff;
+}
+.noghre-admin-login-logo span {
+	color: #fff;
+	font-weight: 800;
+	font-size: 28px;
+	line-height: 1;
+}
+.noghre-admin-login-title {
+	font-size: 20px;
+	font-weight: 800;
+	color: #241F1E;
+	margin: 20px 0 6px;
+}
+.noghre-admin-login-subtitle {
+	font-size: 13px;
+	color: #5B524F;
+	margin-bottom: 26px;
+	line-height: 1.7;
+}
+.noghre-admin-login-field {
+	text-align: right;
+	margin-bottom: 18px;
+}
+.noghre-admin-login-field label {
+	display: block;
+	font-size: 13px;
+	font-weight: 600;
+	color: #241F1E;
+	margin-bottom: 8px;
+}
+.noghre-admin-login-field input {
+	width: 100%;
+	height: 52px;
+	padding: 0 16px;
+	border: 2px solid rgba(36,31,30,.12);
+	border-radius: 12px;
+	font-size: 18px;
+	font-family: 'Segoe UI', Tahoma, sans-serif;
+	text-align: center;
+	letter-spacing: 4px;
+	font-weight: 700;
+	color: #7A2E38;
+	background: #FBF7F4;
+	box-sizing: border-box;
+	text-transform: uppercase;
+	transition: border-color .15s, box-shadow .15s, background .15s;
+}
+.noghre-admin-login-field input::placeholder {
+	color: rgba(122,46,56,.3);
+	letter-spacing: 2px;
+}
+.noghre-admin-login-field input:focus {
+	outline: none;
+	border-color: #7A2E38;
+	background: #fff;
+	box-shadow: 0 0 0 4px rgba(122,46,56,.1);
+}
+.noghre-admin-login-btn {
+	width: 100%;
+	height: 52px;
+	background: linear-gradient(135deg, #7A2E38, #5C2129);
+	color: #fff;
+	border: none;
+	border-radius: 12px;
+	font-size: 16px;
+	font-weight: 700;
+	font-family: inherit;
+	cursor: pointer;
+	transition: transform .15s ease, box-shadow .15s ease;
+	box-shadow: 0 8px 20px rgba(122,46,56,.3);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+}
+.noghre-admin-login-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 12px 28px rgba(122,46,56,.4);
+}
+.noghre-admin-login-btn:active {
+	transform: translateY(0);
+	box-shadow: 0 4px 12px rgba(122,46,56,.3);
+}
+.noghre-admin-login-btn:disabled {
+	opacity: .6;
+	cursor: wait;
+	transform: none;
+	box-shadow: 0 4px 12px rgba(122,46,56,.2);
+}
+.noghre-admin-login-message {
+	font-size: 13px;
+	line-height: 1.7;
+	min-height: 1.2em;
+	margin: 14px 0 0;
+	text-align: center;
+	font-weight: 500;
+}
+.noghre-admin-login-message.is-error { color: #b3261e; }
+.noghre-admin-login-message.is-success { color: #1e7a3d; }
+.noghre-admin-login-back {
+	display: inline-block;
+	margin-top: 22px;
+	font-size: 13px;
+	color: #5B524F;
+	text-decoration: none;
+	transition: color .15s;
+}
+.noghre-admin-login-back:hover { color: #7A2E38; }
+
+@media (max-width: 420px) {
+	.noghre-admin-login-card {
+		padding: 40px 20px 22px;
+		max-width: 100%;
+	}
+	.noghre-admin-login-title { font-size: 18px; }
+	.noghre-admin-login-field input { font-size: 16px; letter-spacing: 3px; height: 48px; }
+	.noghre-admin-login-btn { height: 48px; font-size: 15px; }
+}
+
+@media all and (display-mode: standalone) {
+	.noghre-admin-login-page {
+		padding-top: max(60px, env(safe-area-inset-top));
+	}
+}

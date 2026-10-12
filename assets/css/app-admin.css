@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Noghre App — Admin-Specific Styles
+   استایل‌های اختصاصی اپ مدیر سالن
+   ========================================================================== */
+
+/* ---------- کارت لیست رزروها در اپ ---------- */
+.noghre-app-body .noghre-booking-list-wrap { margin: 0; }
+.noghre-app-body .noghre-booking-list-toolbar { display: none; }
+
+/* ---------- کارت وضعیت رزرو ---------- */
+.noghre-app-body .noghre-booking-status {
+	background: #fff;
+	border-radius: 12px;
+	padding: 16px;
+	box-shadow: 0 2px 8px rgba(36,31,30,.06);
+	border: 1px solid rgba(36,31,30,.08);
+	margin: 0;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-status > h3 {
+	display: none !important;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-status .noghre-status-badge {
+	display: block;
+	width: fit-content;
+	margin: 0 auto 16px;
+	padding: 8px 24px;
+	font-size: 14px;
+	text-align: center;
+}
+
+/* ---------- نوتیفیکیشن‌های صفحه رزرو ---------- */
+.noghre-mobile-app .noghre-app-body .noghre-booking-notice {
+	padding: 10px 12px;
+	font-size: 13px;
+	border-radius: 8px;
+	margin-bottom: 12px;
+}
+
+/* ---------- جدول جزئیات رزرو ---------- */
+.noghre-mobile-app .noghre-app-body .noghre-booking-table th,
+.noghre-mobile-app .noghre-app-body .noghre-booking-table td {
+	font-size: 13px;
+	padding: 8px 6px;
+}
+
+/* ---------- دکمه‌های مدیریت رزرو ---------- */
+.noghre-mobile-app .noghre-app-body .noghre-booking-admin-actions {
+	margin-top: 16px;
+	padding-top: 12px;
+	gap: 8px;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-admin-actions h4 {
+	font-size: 14px;
+	margin-bottom: 4px;
+}
+.noghre-mobile-app .noghre-app-body .noghre-booking-admin-actions .btn,
+.noghre-mobile-app .noghre-app-body .noghre-booking-admin-actions button {
+	font-size: 13px;
+	padding: 8px 14px;
+}
+
+/* ---------- QR کد در اپ ---------- */
+.noghre-mobile-app .noghre-app-body .noghre-booking-qr {
+	padding: 16px;
+	margin-bottom: 16px;
+}
+.noghre-mobile-app .noghre-app-body #noghre-qr-canvas canvas {
+	width: 180px !important;
+	height: 180px !important;
+}

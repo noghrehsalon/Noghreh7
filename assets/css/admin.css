@@ -1,0 +1,401 @@
+.noghre-admin-wrap .title{
+	margin-top: 28px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #dcdcde;
+}
+
+/* ==========================================================
+   Repeater (شعبه‌ها، خدمات، ساعات، پرسنل، مجوزها)
+   ========================================================== */
+.noghre-repeater-rows{ margin-bottom: 14px; }
+
+.noghre-repeater-row{
+	display:flex;
+	align-items:center;
+	gap:16px;
+	background:#fff;
+	border:1px solid #dcdcde;
+	border-radius:4px;
+	padding:14px;
+	margin-bottom:10px;
+}
+.noghre-repeater-row-stacked{ align-items:flex-start; }
+
+.noghre-repeater-fields{
+	flex:1;
+	display:flex;
+	flex-wrap:wrap;
+	gap:10px;
+}
+.noghre-repeater-row-stacked .noghre-repeater-fields{
+	flex-direction:column;
+}
+.noghre-repeater-fields input,
+.noghre-repeater-fields textarea{
+	flex:1;
+	min-width:180px;
+}
+
+.noghre-media-field{ text-align:center; flex:0 0 auto; }
+
+.noghre-remove-row{
+	color:#b32d2e;
+	border:none;
+	background:none;
+	font-size:16px;
+	cursor:pointer;
+	padding:6px 10px;
+	text-decoration:none;
+}
+.noghre-remove-row:hover{ color:#791919; }
+.noghre-remove-row .dashicons{
+	font-size:20px;
+	width:20px;
+	height:20px;
+	line-height:1;
+}
+
+/* ==========================================================
+   چیدمان صفحه اصلی: لیست قابل درگ‌ودراپ
+   ========================================================== */
+.noghre-sortable{ max-width:640px; margin:0; padding:0; list-style:none; }
+.noghre-sortable-item{
+	display:flex; align-items:center; gap:14px;
+	background:#fff; border:1px solid #dcdcde; border-radius:4px;
+	padding:12px 14px; margin-bottom:8px;
+}
+.noghre-sortable-item.ui-sortable-helper{ box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+.noghre-drag-handle{ cursor:grab; color:#787c82; }
+.noghre-drag-handle .dashicons{
+	font-size:18px;
+	width:18px;
+	height:18px;
+	line-height:1;
+	vertical-align:middle;
+}
+.noghre-section-label{ display:flex; align-items:center; gap:8px; font-weight:600; flex:1; }
+.noghre-section-extra{ display:flex; align-items:center; gap:6px; font-size:13px; color:#555; }
+.noghre-section-visibility{ display:flex; gap:12px; font-size:12px; color:#555; margin-inline-start:auto; }
+.noghre-section-visibility label{ display:flex; align-items:center; gap:4px; white-space:nowrap; }
+
+.noghre-license-row .noghre-license-image-fields > *{ margin-bottom:8px; }
+.noghre-license-row textarea.code{ font-family: Consolas, Monaco, monospace; direction: ltr; text-align: left; }
+
+/* ==========================================================
+   رنگ‌بندی وضعیت‌ها (استاندارد وردپرس)
+   ========================================================== */
+.noghre-status-pill{
+	display:inline-block;
+	padding:3px 10px;
+	border-radius:3px;
+	font-size:12px;
+	font-weight:600;
+	line-height:1.6;
+}
+.noghre-status-pill.status-pending{
+	background:#fcf9e8;
+	color:#8a6100;
+	border:1px solid #f0d78c;
+}
+.noghre-status-pill.status-confirmed{
+	background:#edfaef;
+	color:#008a20;
+	border:1px solid #b8e6bf;
+}
+.noghre-status-pill.status-edited{
+	background:#f0f6fc;
+	color:#0a4b78;
+	border:1px solid #b9d8f2;
+}
+.noghre-status-pill.status-used{
+	background:#edfaef;
+	color:#00695c;
+	border:1px solid #b8e6bf;
+}
+.noghre-status-pill.status-unused{
+	background:#fcf0f1;
+	color:#d63638;
+	border:1px solid #f0b8bc;
+}
+
+/* ==========================================================
+   Dropdown خدمات در کد تخفیف
+   ========================================================== */
+.noghre-dc-service-dropdown{ position:relative; max-width:320px; }
+.noghre-dc-service-dropdown summary{
+	list-style:none; cursor:pointer; padding:8px 12px;
+	border:1px solid #8c8f94; border-radius:4px; background:#fff;
+	display:flex; align-items:center; justify-content:space-between;
+	font-size:13px;
+}
+.noghre-dc-service-dropdown summary::-webkit-details-marker{ display:none; }
+.noghre-dc-service-dropdown summary::after{ content:'▾'; color:#787c82; }
+.noghre-dc-service-dropdown[open] summary::after{ content:'▴'; }
+.noghre-dc-service-panel{
+	position:absolute; z-index:20; top:calc(100% + 4px); right:0; left:0;
+	background:#fff; border:1px solid #8c8f94; border-radius:4px;
+	box-shadow: 0 4px 12px rgba(0,0,0,.1); padding:8px; max-height:220px; overflow-y:auto;
+}
+.noghre-dc-service-panel label{ display:block; padding:5px 4px; }
+.noghre-dc-service-panel label:hover{ background:#f0f0f1; }
+
+/* ==========================================================
+   فیلد جستجو و فیلتر لیست رزروها در پنل
+   ========================================================== */
+.noghre-bookings-toolbar{
+	display:flex; align-items:center; gap:14px;
+	margin: 12px 0; flex-wrap:wrap;
+}
+.noghre-bookings-toolbar #noghre-bookings-search{
+	flex:1; min-width:220px; max-width:440px;
+	height:32px; padding:0 12px; border:1px solid #8c8f94;
+	border-radius:4px; font-size:13px; font-family:inherit;
+}
+.noghre-bookings-toolbar #noghre-bookings-search:focus{
+	border-color:#2271b1; outline:none;
+	box-shadow:0 0 0 1px #2271b1;
+}
+.noghre-bookings-toolbar #noghre-bookings-status-filter{
+	height:32px; padding:0 12px; border:1px solid #8c8f94;
+	border-radius:4px; font-size:13px; font-family:inherit;
+	min-width:160px;
+}
+.noghre-bookings-toolbar #noghre-bookings-status-filter:focus{
+	border-color:#2271b1; outline:none;
+	box-shadow:0 0 0 1px #2271b1;
+}
+.noghre-bookings-count{
+	font-size:13px; color:#646970; font-weight:600;
+}
+
+.noghre-sms-cell{
+	text-align:center; font-size:16px;
+}
+
+/* ==========================================================
+   باکس ثبت شماره در اپ موبایل (شورت‌کد ariatin-noghreh-mobile)
+   ========================================================== */
+.noghre-app-signup-box {
+	background: #fff;
+	margin: 12px;
+	padding: 14px;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(36,31,30,.06);
+	border: 1px solid rgba(36,31,30,.08);
+}
+.noghre-app-signup-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 12px;
+}
+.noghre-app-signup-header strong { font-size: 14px; color: #241F1E; }
+.noghre-app-signup-count {
+	font-size: 12px;
+	color: #7A2E38;
+	background: #EFDCD9;
+	padding: 3px 10px;
+	border-radius: 999px;
+	font-weight: 600;
+}
+.noghre-app-signup-form {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.noghre-app-signup-form input {
+	height: 42px;
+	padding: 0 14px;
+	border: 1px solid rgba(36,31,30,.12);
+	border-radius: 8px;
+	font-size: 15px;
+	font-family: inherit;
+	background: #FBF7F4;
+}
+.noghre-app-signup-form input:focus {
+	outline: none;
+	border-color: #7A2E38;
+	background: #fff;
+}
+.noghre-app-signup-form button {
+	height: 42px;
+	border: none;
+	border-radius: 8px;
+	background: #7A2E38;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	font-family: inherit;
+	cursor: pointer;
+	transition: background .15s;
+}
+.noghre-app-signup-form button:hover { background: #5C2129; }
+.noghre-app-signup-form button:disabled { opacity: .6; cursor: wait; }
+.noghre-app-signup-message {
+	margin: 10px 0 0;
+	font-size: 13px;
+	line-height: 1.7;
+	min-height: 1.2em;
+}
+.noghre-app-signup-message.is-success { color: #1e7a3d; }
+.noghre-app-signup-message.is-error { color: #b3261e; }
+.noghre-app-signup-message.is-warning { color: #8a6100; }
+
+/* ==========================================================
+   کارت خانواده فونت
+   ========================================================== */
+.noghre-font-family-card {
+	border:1px solid #dcdcde;
+	border-radius:4px;
+	padding:18px 20px;
+	margin-bottom:16px;
+	background:#fff;
+}
+.noghre-font-family-card h3 {
+	margin:0 0 4px;
+	font-size:15px;
+	color:#1d2327;
+	font-weight:600;
+}
+.noghre-font-family-card table {
+	border-collapse: collapse;
+	background: #fff;
+}
+.noghre-font-family-card table thead th {
+	background: #f6f7f7;
+	color: #50575e;
+	font-weight: 600;
+	font-size: 12px;
+	border-bottom: 1px solid #dcdcde;
+}
+.noghre-font-family-card table tbody tr {
+	border-bottom: 1px solid #f0f0f1;
+}
+.noghre-font-family-card table tbody tr:last-child {
+	border-bottom: none;
+}
+.noghre-font-family-card table tbody tr:hover {
+	background: #fafafa;
+}
+.noghre-font-family-card input[type="file"] {
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	padding: 4px 6px;
+	background: #fff;
+	max-width: 160px;
+	font-size: 11px;
+}
+.noghre-font-family-card code {
+	font-family: Consolas, Monaco, monospace;
+	font-size: 11px;
+}
+
+/* ==========================================================
+   هدر کارت فونت (بالای هر خانواده)
+   ========================================================== */
+.noghre-font-family-header{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	margin-bottom:14px;
+	padding-bottom:12px;
+	border-bottom:1px solid #f0f0f1;
+}
+.noghre-font-family-header p{
+	margin:0;
+	font-size:12px;
+	color:#646970;
+}
+.noghre-font-family-header .noghre-font-active-label{
+	color:#008a20;
+	font-weight:600;
+}
+
+/* ==========================================================
+   ردیف منوهای اپلیکیشن (تب اپ)
+   ========================================================== */
+.noghre-app-menu-row {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	background: #f9f9f9;
+	padding: 12px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	margin-bottom: 8px;
+	flex-wrap: wrap;
+}
+
+.noghre-app-icon-wrap {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	flex: 0 0 auto;
+}
+
+.noghre-app-icon-wrap .noghre-app-icon-select {
+	height: 30px;
+	max-width: 130px;
+	font-size: 12px;
+}
+
+.noghre-app-icon-preview-dashicon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	font-size: 22px;
+	color: #2271b1;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	flex-shrink: 0;
+}
+
+.noghre-app-icon-preview {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	object-fit: contain;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	background: #fff;
+	padding: 2px;
+	flex-shrink: 0;
+}
+
+.noghre-app-menu-row .noghre-app-active-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 12px;
+	flex: 0 0 auto;
+}
+
+/* ==========================================================
+   dropdown صفحه پیش‌فرض اپ
+   ========================================================== */
+#default_nav_id {
+	min-width: 280px;
+}
+
+/* ==========================================================
+   آیکون دکمه back در اپ (dashicon)
+   ========================================================== */
+.noghre-app-back .dashicons {
+	font-size: 22px;
+	width: 22px;
+	height: 22px;
+	line-height: 1;
+}
+
+/* ==========================================================
+   آیکون دکمه نصب PWA در اپ
+   ========================================================== */
+.noghre-pwa-install-btn .dashicons {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	line-height: 1;
+}

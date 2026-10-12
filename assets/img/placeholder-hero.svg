@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+<rect width="800" height="1000" fill="#EFDCD9"/>
+<circle cx="400" cy="380" r="140" fill="#C9C0B8"/>
+<rect x="220" y="560" width="360" height="220" rx="40" fill="#C9C0B8"/>
+<text x="400" y="920" font-family="Tahoma, sans-serif" font-size="28" fill="#7A2E38" text-anchor="middle">سالن زیبایی نقره</text>
+</svg>
